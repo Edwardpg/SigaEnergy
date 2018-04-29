@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A1C680AC-49B0-498F-9EC0-995E74E0376E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SimuladorCastoEnergia.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SimuladorCastoEnergia">
+        <MSBuild Projects="SimuladorCastoEnergia.dproj"/>
+    </Target>
+    <Target Name="SimuladorCastoEnergia:Clean">
+        <MSBuild Projects="SimuladorCastoEnergia.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SimuladorCastoEnergia:Make">
+        <MSBuild Projects="SimuladorCastoEnergia.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SimuladorCastoEnergia"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SimuladorCastoEnergia:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SimuladorCastoEnergia:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
