@@ -5,7 +5,7 @@ object FrmCadastrar: TFrmCadastrar
   BorderStyle = bsSingle
   Caption = 'Cadastrar Eletrodom'#233'sticos'
   ClientHeight = 547
-  ClientWidth = 798
+  ClientWidth = 763
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,14 +14,16 @@ object FrmCadastrar: TFrmCadastrar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBoxAparelhos: TGroupBox
     Left = 8
-    Top = 8
+    Top = 58
     Width = 753
-    Height = 489
+    Height = 481
     Caption = 'Aparelhos'
+    Enabled = False
     TabOrder = 0
     object LabelArCondicionado: TLabel
       Left = 15
@@ -75,8 +77,8 @@ object FrmCadastrar: TFrmCadastrar
     object LabelFerroPassar: TLabel
       Left = 15
       Top = 366
-      Width = 112
-      Height = 11
+      Width = 76
+      Height = 13
       Caption = 'Ferro de Passar'
     end
     object LabelLampada: TLabel
@@ -101,7 +103,7 @@ object FrmCadastrar: TFrmCadastrar
       Caption = 'Potencia (W)'
     end
     object LabelTempoUsoHoraOuDia: TLabel
-      Left = 343
+      Left = 327
       Top = 20
       Width = 86
       Height = 13
@@ -115,7 +117,7 @@ object FrmCadastrar: TFrmCadastrar
       Caption = 'Quantidade'
     end
     object LabelkWh: TLabel
-      Left = 473
+      Left = 523
       Top = 20
       Width = 21
       Height = 13
@@ -127,6 +129,13 @@ object FrmCadastrar: TFrmCadastrar
       Width = 44
       Height = 13
       Caption = 'Custo R$'
+    end
+    object LabelComodosQtd: TLabel
+      Left = 427
+      Top = 20
+      Width = 73
+      Height = 13
+      Caption = 'C'#244'modos (Qtd)'
     end
     object SpinEditArCondicionadoQtd: TSpinEdit
       Left = 246
@@ -309,72 +318,72 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 19
     end
     object EditArCondicionadokWh: TEdit
-      Left = 473
+      Left = 522
       Top = 56
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 20
     end
     object EditVentiladorkWh: TEdit
-      Left = 473
+      Left = 522
       Top = 106
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 21
     end
     object EditTvkWh: TEdit
-      Left = 473
+      Left = 522
       Top = 153
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 22
     end
     object EditGeladeirakWh: TEdit
-      Left = 473
+      Left = 522
       Top = 193
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 23
     end
     object EditChuveirokWh: TEdit
-      Left = 473
+      Left = 522
       Top = 237
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 24
     end
     object EditkWh: TEdit
-      Left = 473
+      Left = 522
       Top = 281
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 25
     end
     object EditComputadorkWh: TEdit
-      Left = 473
+      Left = 522
       Top = 322
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 26
     end
     object EditFerroPassarkWh: TEdit
-      Left = 473
+      Left = 522
       Top = 361
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 27
     end
     object EditlLampadakWh: TEdit
-      Left = 473
+      Left = 522
       Top = 403
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 28
     end
     object EditMicroondaskWh: TEdit
-      Left = 473
+      Left = 522
       Top = 448
-      Width = 121
+      Width = 70
       Height = 21
       TabOrder = 29
     end
@@ -466,7 +475,7 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 37
       Value = 0
     end
-    object SpinEditlLampadaPoten: TSpinEdit
+    object SpinEditLampadaPoten: TSpinEdit
       Left = 159
       Top = 403
       Width = 50
@@ -588,5 +597,149 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 49
       Value = 0
     end
+    object SpinEditArCondicionadoComodos: TSpinEdit
+      Left = 432
+      Top = 56
+      Width = 49
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 50
+      Value = 0
+    end
+    object SpinEditVentiladorComodos: TSpinEdit
+      Left = 431
+      Top = 105
+      Width = 48
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 51
+      Value = 0
+    end
+    object SpinEditTvComodos: TSpinEdit
+      Left = 433
+      Top = 153
+      Width = 48
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 52
+      Value = 0
+    end
+    object SpinEditGeladeiraComodos: TSpinEdit
+      Left = 432
+      Top = 193
+      Width = 48
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 53
+      Value = 0
+    end
+    object SpinEditChuveiroComodos: TSpinEdit
+      Left = 433
+      Top = 235
+      Width = 50
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 54
+      Value = 0
+    end
+    object SpinEdiSecadorCabeloComodos: TSpinEdit
+      Left = 431
+      Top = 280
+      Width = 48
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 55
+      Value = 0
+    end
+    object SpinEditComputadorComodos: TSpinEdit
+      Left = 433
+      Top = 322
+      Width = 46
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 56
+      Value = 0
+    end
+    object SpinEditFerroPassarComodos: TSpinEdit
+      Left = 431
+      Top = 363
+      Width = 48
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 57
+      Value = 0
+    end
+    object SpinEditLampadaComodos: TSpinEdit
+      Left = 431
+      Top = 403
+      Width = 50
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 58
+      Value = 0
+    end
+    object SpinEditMicroondasComodos: TSpinEdit
+      Left = 432
+      Top = 448
+      Width = 48
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 59
+      Value = 0
+    end
+  end
+  object RadioGroupTpSimulacao: TRadioGroup
+    Left = 8
+    Top = 8
+    Width = 211
+    Height = 41
+    Caption = 'Tipo de Simula'#231#227'o'
+    TabOrder = 1
+  end
+  object RadioBtnDiario: TRadioButton
+    Left = 16
+    Top = 24
+    Width = 47
+    Height = 17
+    Caption = 'Di'#225'rio'
+    TabOrder = 2
+    OnClick = RadioBtnDiarioClick
+  end
+  object RadioButton2: TRadioButton
+    Left = 67
+    Top = 24
+    Width = 60
+    Height = 17
+    Caption = 'Mensal'
+    TabOrder = 3
+    OnClick = RadioButton2Click
+  end
+  object RadioBtnPersonalizado: TRadioButton
+    Left = 126
+    Top = 24
+    Width = 89
+    Height = 17
+    Caption = 'Personalizado'
+    TabOrder = 4
+    OnClick = RadioBtnPersonalizadoClick
+  end
+  object BtnCalcular: TBitBtn
+    Left = 680
+    Top = 8
+    Width = 75
+    Height = 44
+    Caption = 'C'#225'lcular'
+    TabOrder = 5
+    OnClick = BtnCalcularClick
   end
 end

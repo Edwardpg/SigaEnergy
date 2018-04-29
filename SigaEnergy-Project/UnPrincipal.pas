@@ -16,9 +16,12 @@ type
     LabelGitHub: TLabel;
     Label3: TLabel;
     BtnConsultar: TBitBtn;
+    LinkLabelGitHub: TLinkLabel;
     procedure BtnIrParaCadastroClick(Sender: TObject);
     procedure BtnConsultarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure LinkLabelGitHubLinkClick(Sender: TObject; const Link: string;
+      LinkType: TSysLinkType);
   private const
   FNãoPermitirConsulta = 'Desculpa mas para efetuar uma consulta é necessário ' +
   'fazer um cadastro antes';
@@ -64,6 +67,18 @@ end;
 procedure TFrmSigaEnergy.FormShow(Sender: TObject);
 begin
   BtnIrParaCadastro.SetFocus;
+end;
+
+procedure TFrmSigaEnergy.LinkLabelGitHubLinkClick(Sender: TObject;
+  const Link: string; LinkType: TSysLinkType);
+begin
+ {procedure TFrmPrincipal.LinkLabel1LinkClick(Sender: TObject; const Link: string;
+LinkType: TSysLinkType);
+begin
+ Com o Comando ShellExecute, podemos executar a abertura do Brownser padrão no seu
+ sistema operacional, e nele já abrir o link clicado
+Aqui oque importa -> ShellExecute(0, nil, PChar(Link), nil, nil, 1);
+      }
 end;
 
 end.

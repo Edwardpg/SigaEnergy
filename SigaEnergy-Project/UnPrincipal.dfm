@@ -4,8 +4,8 @@ object FrmSigaEnergy: TFrmSigaEnergy
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Siga Energy - Projeto Integrador 5'#186' Semestre'
-  ClientHeight = 167
-  ClientWidth = 390
+  ClientHeight = 163
+  ClientWidth = 377
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object FrmSigaEnergy: TFrmSigaEnergy
   object ImageLogoSigaEnergy: TImage
     Left = 0
     Top = 0
-    Width = 390
+    Width = 377
     Height = 49
     Align = alTop
     Picture.Data = {
@@ -483,8 +483,8 @@ object FrmSigaEnergy: TFrmSigaEnergy
     ParentFont = False
   end
   object LabelGitHub: TLabel
-    Left = 143
-    Top = 140
+    Left = 121
+    Top = 142
     Width = 54
     Height = 13
     Caption = 'Download: '
@@ -527,5 +527,14 @@ object FrmSigaEnergy: TFrmSigaEnergy
     Caption = 'Consultar'
     TabOrder = 1
     OnClick = BtnConsultarClick
+  end
+  object LinkLabelGitHub: TLinkLabel
+    Left = 181
+    Top = 141
+    Width = 56
+    Height = 17
+    Caption = 'Clique aqui'
+    TabOrder = 2
+    OnLinkClick = LinkLabelGitHubLinkClick
   end
 end
