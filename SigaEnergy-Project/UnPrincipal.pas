@@ -16,12 +16,14 @@ type
     LabelGitHub: TLabel;
     Label3: TLabel;
     BtnConsultar: TBitBtn;
-    LinkLabelGitHub: TLinkLabel;
+    LbGitHub: TLabel;
     procedure BtnIrParaCadastroClick(Sender: TObject);
     procedure BtnConsultarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure LinkLabelGitHubLinkClick(Sender: TObject; const Link: string;
-      LinkType: TSysLinkType);
+    procedure LbGitHubClick(Sender: TObject);
+    procedure LbGitHubMouseLeave(Sender: TObject);
+    procedure LbGitHubMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure LinkLabelGitHubClick(Sender: TObject);
   private const
   FNãoPermitirConsulta = 'Desculpa mas para efetuar uma consulta é necessário ' +
   'fazer um cadastro antes';
@@ -37,7 +39,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnCadastrar;
+uses UnCadastrar, Winapi.ShellAPI, Winapi.UrlMon;
 
 { TSigaEnergy }
 
@@ -69,16 +71,27 @@ begin
   BtnIrParaCadastro.SetFocus;
 end;
 
-procedure TFrmSigaEnergy.LinkLabelGitHubLinkClick(Sender: TObject;
-  const Link: string; LinkType: TSysLinkType);
+procedure TFrmSigaEnergy.LbGitHubClick(Sender: TObject);
 begin
- {procedure TFrmPrincipal.LinkLabel1LinkClick(Sender: TObject; const Link: string;
-LinkType: TSysLinkType);
+  HlinkNavigateString(Nil, 'https://github.com/Edwardpg/SigaEnergy');
+end;
+
+procedure TFrmSigaEnergy.LbGitHubMouseLeave(Sender: TObject);
 begin
- Com o Comando ShellExecute, podemos executar a abertura do Brownser padrão no seu
- sistema operacional, e nele já abrir o link clicado
-Aqui oque importa -> ShellExecute(0, nil, PChar(Link), nil, nil, 1);
-      }
+    TLabel(Sender).Font.Color := clBlack;
+    TLabel(Sender).Font.Style := [];
+end;
+
+procedure TFrmSigaEnergy.LbGitHubMouseMove(Sender: TObject; Shift: TShiftState;
+    X, Y: Integer);
+begin
+  TLabel(Sender).Font.Color := clBlue;
+  TLabel(Sender).Font.Style := [fsUnderline];
+end;
+
+procedure TFrmSigaEnergy.LinkLabelGitHubClick(Sender: TObject);
+begin
+  HlinkNavigateString(Nil, 'https://github.com/Edwardpg/SigaEnergy');
 end;
 
 end.

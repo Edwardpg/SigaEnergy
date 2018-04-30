@@ -454,7 +454,6 @@ object FrmSigaEnergy: TFrmSigaEnergy
       628E630CB0EFDB8192239A4039FE2AFD03A9C8F2B9E5B96C709567194B9E72F7
       6ED59C69A5BA5ADE2CE7E22CE2966B9B7D6F0D09C611A34E9FBE926E51AB5E6E
       C94A5A25523ABB6B7D340A28A2BD03CD3FFFD9}
-    ExplicitWidth = 382
   end
   object Label1: TLabel
     Left = 8
@@ -498,9 +497,9 @@ object FrmSigaEnergy: TFrmSigaEnergy
   object Label3: TLabel
     Left = 8
     Top = 112
-    Width = 269
+    Width = 282
     Height = 18
-    Caption = 'qual Bandeira Tarifaria voc'#234' se encaixa ! '
+    Caption = 'a qual Bandeira Tarifaria voc'#234' se encaixa ! '
     Color = clRed
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clRed
@@ -509,6 +508,17 @@ object FrmSigaEnergy: TFrmSigaEnergy
     Font.Style = []
     ParentColor = False
     ParentFont = False
+  end
+  object LbGitHub: TLabel
+    Left = 177
+    Top = 142
+    Width = 95
+    Height = 13
+    Cursor = crHandPoint
+    Caption = 'Clique aqui (GitHub)'
+    OnClick = LbGitHubClick
+    OnMouseMove = LbGitHubMouseMove
+    OnMouseLeave = LbGitHubMouseLeave
   end
   object BtnIrParaCadastro: TButton
     Left = 297
@@ -527,14 +537,5 @@ object FrmSigaEnergy: TFrmSigaEnergy
     Caption = 'Consultar'
     TabOrder = 1
     OnClick = BtnConsultarClick
-  end
-  object LinkLabelGitHub: TLinkLabel
-    Left = 181
-    Top = 141
-    Width = 56
-    Height = 17
-    Caption = 'Clique aqui'
-    TabOrder = 2
-    OnLinkClick = LinkLabelGitHubLinkClick
   end
 end
