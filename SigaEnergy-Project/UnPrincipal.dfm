@@ -481,7 +481,7 @@ object FrmSigaEnergy: TFrmSigaEnergy
     Font.Style = []
     ParentFont = False
   end
-  object LabelGitHub: TLabel
+  object LabelDownload: TLabel
     Left = 121
     Top = 142
     Width = 54

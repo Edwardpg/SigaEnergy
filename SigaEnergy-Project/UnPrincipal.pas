@@ -13,7 +13,7 @@ type
     ImageLogoSigaEnergy: TImage;
     Label1: TLabel;
     Label2: TLabel;
-    LabelGitHub: TLabel;
+    LabelDownload: TLabel;
     Label3: TLabel;
     BtnConsultar: TBitBtn;
     LbGitHub: TLabel;
@@ -23,7 +23,6 @@ type
     procedure LbGitHubClick(Sender: TObject);
     procedure LbGitHubMouseLeave(Sender: TObject);
     procedure LbGitHubMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-    procedure LinkLabelGitHubClick(Sender: TObject);
   private const
   FNãoPermitirConsulta = 'Desculpa mas para efetuar uma consulta é necessário ' +
   'fazer um cadastro antes';
@@ -39,7 +38,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnCadastrar, Winapi.ShellAPI, Winapi.UrlMon;
+uses UnCadastrar, Winapi.ShellAPI, Winapi.UrlMon, System.UITypes;
 
 { TSigaEnergy }
 
@@ -87,11 +86,6 @@ procedure TFrmSigaEnergy.LbGitHubMouseMove(Sender: TObject; Shift: TShiftState;
 begin
   TLabel(Sender).Font.Color := clBlue;
   TLabel(Sender).Font.Style := [fsUnderline];
-end;
-
-procedure TFrmSigaEnergy.LinkLabelGitHubClick(Sender: TObject);
-begin
-  HlinkNavigateString(Nil, 'https://github.com/Edwardpg/SigaEnergy');
 end;
 
 end.

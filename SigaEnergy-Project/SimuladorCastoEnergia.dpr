@@ -3,8 +3,9 @@ program SimuladorCastoEnergia;
 uses
   Vcl.Forms,
   UnPrincipal in 'UnPrincipal.pas' {FrmSigaEnergy},
-  UnCalcular in 'UnCalcular.pas',
-  UnCadastrar in 'UnCadastrar.pas' {FrmCadastrar};
+  UnCalcularABS in 'UnCalcularABS.pas',
+  UnCadastrar in 'UnCadastrar.pas' {FrmCadastrar},
+  UnCalculos in 'UnCalculos.pas';
 
 {$R *.res}
 

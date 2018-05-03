@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin,
-  Vcl.ExtCtrls, Vcl.Buttons;
+  Vcl.ExtCtrls, Vcl.Buttons, UnCalcularABS;
 
 type
   TEvalidationError = class (Exception);
@@ -35,23 +35,13 @@ type
     EditArCondicionadoCusto: TEdit;
     EditVentiladorCusto: TEdit;
     EditTvCusto: TEdit;
-    Edit14: TEdit;
+    EditGeladeiraCusto: TEdit;
     EditChuveiroCusto: TEdit;
     EditSecadorCabeloCusto: TEdit;
     EditComputadorCusto: TEdit;
     EditFerroPassarCusto: TEdit;
     EditlLampadaCusto: TEdit;
     EditMicroondasCusto: TEdit;
-    EditArCondicionadokWh: TEdit;
-    EditVentiladorkWh: TEdit;
-    EditTvkWh: TEdit;
-    EditGeladeirakWh: TEdit;
-    EditChuveirokWh: TEdit;
-    EditkWh: TEdit;
-    EditComputadorkWh: TEdit;
-    EditFerroPassarkWh: TEdit;
-    EditlLampadakWh: TEdit;
-    EditMicroondaskWh: TEdit;
     SpinEditArCondicionadoPoten: TSpinEdit;
     SpinEditVentiladorPoten: TSpinEdit;
     SpinEditTvPoten: TSpinEdit;
@@ -79,7 +69,7 @@ type
     SpinEditMicroondasTempHD: TSpinEdit;
     RadioGroupTpSimulacao: TRadioGroup;
     RadioBtnDiario: TRadioButton;
-    RadioButton2: TRadioButton;
+    RadioButtonMensal: TRadioButton;
     RadioBtnPersonalizado: TRadioButton;
     BtnCalcular: TBitBtn;
     SpinEditArCondicionadoComodos: TSpinEdit;
@@ -93,12 +83,23 @@ type
     SpinEditLampadaComodos: TSpinEdit;
     SpinEditMicroondasComodos: TSpinEdit;
     LabelComodosQtd: TLabel;
+    SpinEditArCondicionadokWh: TSpinEdit;
+    SpinEditVentiladorkWh: TSpinEdit;
+    SpinEditTvkWh: TSpinEdit;
+    SpinEditGeladeirakWh: TSpinEdit;
+    SpinEditChuveirokWh: TSpinEdit;
+    SpinEditSecadorDeCabelokWh: TSpinEdit;
+    SpinEditComputadorkWh: TSpinEdit;
+    SpinEditFerroPassarkWh: TSpinEdit;
+    SpinEditLampadakWh: TSpinEdit;
+    SpinEditMicroondaskWh: TSpinEdit;
     procedure RadioBtnDiarioClick(Sender: TObject);
-    procedure RadioButton2Click(Sender: TObject);
+    procedure RadioButtonMensalClick(Sender: TObject);
     procedure RadioBtnPersonalizadoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnCalcularClick(Sender: TObject);
   private
+    FCalcular : TCalcular;
     FQtdHora : Integer;
     FQtdTodosSpinEdit : Integer;
   public
@@ -110,7 +111,7 @@ type
     procedure AtivarGroupBoxAparelhos;
     procedure SetarDefaultValorPotencia;
     procedure DesabilitarAlterarPotencia;
-    procedure ValidarQtd;
+    procedure CalcularDiario;
   end;
 
 var
@@ -119,6 +120,9 @@ var
 implementation
 
 {$R *.dfm}
+
+uses
+ UnCalculos;
 
 { TFrmCadastrar }
 
@@ -187,10 +191,30 @@ begin
 end;
 
 procedure TFrmCadastrar.BtnCalcularClick(Sender: TObject);
+var
+  i : string;
+  FcalcDiario : TCalculo;
 begin
-  ValidarQtd;
+  FcalcDiario := nil;
+  if RadioBtnDiario.Checked then
+  begin
+    FcalcDiario := TCalculo.Create;
+    try
+     i := FcalcDiario.CalcularArCondicionado(SpinEditArCondicionadoPoten.Value, SpinEditArCondicionadoQtd.Value,
+  SpinEditArCondicionadoTempoHD.Value, SpinEditArCondicionadoComodos.Value, SpinEditArCondicionadokWh.Value);
+      EditArCondicionadoCusto.Text := i;
+    finally
+      FCalcular.Free;
+    end;
+  end;
 //  MessageDlg();
   //YeaAnNo : If Yes show Resultado Bandeira tarifaria e Salva todo resultado em .txt
+end;
+
+procedure TFrmCadastrar.CalcularDiario;
+
+begin
+
 end;
 
 procedure TFrmCadastrar.DesabilitarAlterarPotencia;
@@ -242,7 +266,7 @@ begin
   AtivarGroupBoxAparelhos;
 end;
 
-procedure TFrmCadastrar.RadioButton2Click(Sender: TObject);
+procedure TFrmCadastrar.RadioButtonMensalClick(Sender: TObject);
 begin
   AtribuirTempoMensa710H;
   DesabilitarAlterarTempo;
@@ -261,19 +285,6 @@ begin
   SpinEditFerroPassarPoten.Value := 190;
   SpinEditLampadaPoten.Value := 110;
   SpinEditMicroondasPoten.Value := 220;
-end;
-
-procedure TFrmCadastrar.ValidarQtd;
-var
-  Component: TComponent;
-begin
-  if (SpinEditArCondicionadoQtd.Value < 0) and (SpinEditArCondicionadoTempoHD.Value < 0)
-  and (SpinEditArCondicionadoComodos.Value < 0) then
-    ShowMessage('qtd invalida');
-    SpinEditArCondicionadoTempoHD.SetFocus;
-//    SpinEditArCondicionadoComodos.SetFocus;
-// Fazer um a umn então, ou usar RTTI
-
 end;
 
 end.
