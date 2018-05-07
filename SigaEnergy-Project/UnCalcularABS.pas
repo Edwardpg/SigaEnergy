@@ -15,7 +15,7 @@ type
     function CalcularFerroDePassar(Potencia,Qtd,Tempo,Comodos, kWh: integer):string; virtual; abstract;
     function CalcularLampada(Potencia,Qtd,Tempo,Comodos, kWh: integer):string; virtual; abstract;
     function CalcularMicroondas(Potencia,Qtd,Tempo,Comodos, kWh: integer):string; virtual; abstract;
-    function CalcularTotal(Total :string):string; virtual; abstract;
+    function CalcularTotal(Potencia,Qtd,Tempo,Comodos, kWh {Arrumar aqui para caber 10 e os nomes de seus respectivos}: string):string; virtual; abstract;
     end;
 implementation
 

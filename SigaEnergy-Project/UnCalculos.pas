@@ -30,7 +30,7 @@ type
       : string; override;
     function CalcularMicroondas(Potencia, Qtd, Tempo, Comodos, kWh: integer)
       : string; override;
-    function CalcularTotal(Total: string): string; override;
+    function CalcularTotal(Potencia,Qtd,Tempo,Comodos, kWh: string): string; override;
     destructor Destroy; override;
   end;
 
@@ -94,10 +94,10 @@ begin
   Result := IntToStr(Potencia * Qtd * Tempo * Comodos * kWh);
 end;
 
-function TCalculo.CalcularTotal(Total: string): string;
+function TCalculo.CalcularTotal(Potencia,Qtd,Tempo,Comodos, kWh: string): string;
 begin
   inherited;
-  Result := Total;
+  Result := Potencia + Qtd + Tempo + Comodos + kWh;
 end;
 
 function TCalculo.CalcularTv(Potencia, Qtd, Tempo, Comodos,

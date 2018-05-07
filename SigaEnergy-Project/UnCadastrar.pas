@@ -40,7 +40,7 @@ type
     EditSecadorCabeloCusto: TEdit;
     EditComputadorCusto: TEdit;
     EditFerroPassarCusto: TEdit;
-    EditlLampadaCusto: TEdit;
+    EditLampadaCusto: TEdit;
     EditMicroondasCusto: TEdit;
     SpinEditArCondicionadoPoten: TSpinEdit;
     SpinEditVentiladorPoten: TSpinEdit;
@@ -65,11 +65,11 @@ type
     SpinEditSecadorCabeloTempHD: TSpinEdit;
     SpinEditComputadorTempHD: TSpinEdit;
     SpinEditFerroPassarTempHD: TSpinEdit;
-    SpinEditlLampadaTempHD: TSpinEdit;
+    SpinEditLampadaTempHD: TSpinEdit;
     SpinEditMicroondasTempHD: TSpinEdit;
     RadioGroupTpSimulacao: TRadioGroup;
     RadioBtnDiario: TRadioButton;
-    RadioButtonMensal: TRadioButton;
+    RadioBtnMensal: TRadioButton;
     RadioBtnPersonalizado: TRadioButton;
     BtnCalcular: TBitBtn;
     SpinEditArCondicionadoComodos: TSpinEdit;
@@ -77,7 +77,7 @@ type
     SpinEditTvComodos: TSpinEdit;
     SpinEditGeladeiraComodos: TSpinEdit;
     SpinEditChuveiroComodos: TSpinEdit;
-    SpinEdiSecadorCabeloComodos: TSpinEdit;
+    SpinEditSecadorCabeloComodos: TSpinEdit;
     SpinEditComputadorComodos: TSpinEdit;
     SpinEditFerroPassarComodos: TSpinEdit;
     SpinEditLampadaComodos: TSpinEdit;
@@ -88,13 +88,26 @@ type
     SpinEditTvkWh: TSpinEdit;
     SpinEditGeladeirakWh: TSpinEdit;
     SpinEditChuveirokWh: TSpinEdit;
-    SpinEditSecadorDeCabelokWh: TSpinEdit;
+    SpinEditSecadorCabelokWh: TSpinEdit;
     SpinEditComputadorkWh: TSpinEdit;
     SpinEditFerroPassarkWh: TSpinEdit;
     SpinEditLampadakWh: TSpinEdit;
     SpinEditMicroondaskWh: TSpinEdit;
+    GroupBoxFuncionalidades: TGroupBox;
+    BtnSalvarTXT: TBitBtn;
+    BtnBandeiraTarifaria: TBitBtn;
+    EditTotalCusto: TEdit;
+    GroupBoxGastoTotal: TGroupBox;
+    EditTotalkWh: TEdit;
+    LabelTotalGasto: TLabel;
+    BtnConsultar: TBitBtn;
+    GroupBoxResultadoConsulta: TGroupBox;
+    EditResultadoConsulta: TEdit;
+    LabelValorFinalConsulta: TLabel;
+    LabelValorRS: TLabel;
+    LabelkWhTotal: TLabel;
     procedure RadioBtnDiarioClick(Sender: TObject);
-    procedure RadioButtonMensalClick(Sender: TObject);
+    procedure RadioBtnMensalClick(Sender: TObject);
     procedure RadioBtnPersonalizadoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnCalcularClick(Sender: TObject);
@@ -111,7 +124,7 @@ type
     procedure AtivarGroupBoxAparelhos;
     procedure SetarDefaultValorPotencia;
     procedure DesabilitarAlterarPotencia;
-    procedure CalcularDiario;
+    procedure CalcularGasto;
   end;
 
 var
@@ -136,7 +149,7 @@ begin
   SpinEditSecadorCabeloTempHD.ReadOnly := False;
   SpinEditComputadorTempHD.ReadOnly := False;
   SpinEditFerroPassarTempHD.ReadOnly := False;
-  SpinEditlLampadaTempHD.ReadOnly := False;
+  SpinEditLampadaTempHD.ReadOnly := False;
   SpinEditMicroondasTempHD.ReadOnly := False;
 end;
 
@@ -156,8 +169,9 @@ begin
   SpinEditSecadorCabeloTempHD.Value := FQtdHora;
   SpinEditComputadorTempHD.Value := FQtdHora;
   SpinEditFerroPassarTempHD.Value := FQtdHora;
-  SpinEditlLampadaTempHD.Value := FQtdHora;
+  SpinEditLampadaTempHD.Value := FQtdHora;
   SpinEditMicroondasTempHD.Value:= FQtdHora;
+  BtnCalcular.Caption := 'Cálculo'#13'Diário';
 end;
 
 procedure TFrmCadastrar.AtribuirTempoMensa710H;
@@ -171,8 +185,9 @@ begin
   SpinEditSecadorCabeloTempHD.Value := FQtdHora;
   SpinEditComputadorTempHD.Value := FQtdHora;
   SpinEditFerroPassarTempHD.Value := FQtdHora;
-  SpinEditlLampadaTempHD.Value := FQtdHora;
+  SpinEditLampadaTempHD.Value := FQtdHora;
   SpinEditMicroondasTempHD.Value:= FQtdHora;
+  BtnCalcular.Caption := 'Cálculo'#13'Mensal';
 end;
 
 procedure TFrmCadastrar.AtribuirTempoPersonalizado;
@@ -186,34 +201,96 @@ begin
   SpinEditSecadorCabeloTempHD.Value := FQtdHora;
   SpinEditComputadorTempHD.Value := FQtdHora;
   SpinEditFerroPassarTempHD.Value := FQtdHora;
-  SpinEditlLampadaTempHD.Value := FQtdHora;
+  SpinEditLampadaTempHD.Value := FQtdHora;
   SpinEditMicroondasTempHD.Value:= FQtdHora;
+  BtnCalcular.Caption := 'Cálculo'#13'Personalizado';
 end;
 
 procedure TFrmCadastrar.BtnCalcularClick(Sender: TObject);
-var
-  i : string;
-  FcalcDiario : TCalculo;
 begin
-  FcalcDiario := nil;
   if RadioBtnDiario.Checked then
   begin
-    FcalcDiario := TCalculo.Create;
-    try
-     i := FcalcDiario.CalcularArCondicionado(SpinEditArCondicionadoPoten.Value, SpinEditArCondicionadoQtd.Value,
-  SpinEditArCondicionadoTempoHD.Value, SpinEditArCondicionadoComodos.Value, SpinEditArCondicionadokWh.Value);
-      EditArCondicionadoCusto.Text := i;
-    finally
-      FCalcular.Free;
-    end;
+   CalcularGasto;
+  end;
+  if RadioBtnMensal.Checked then
+  begin
+   CalcularGasto;
+  end;
+  if RadioBtnPersonalizado.Checked then
+  begin
+    CalcularGasto;
   end;
 //  MessageDlg();
   //YeaAnNo : If Yes show Resultado Bandeira tarifaria e Salva todo resultado em .txt
 end;
 
-procedure TFrmCadastrar.CalcularDiario;
-
+procedure TFrmCadastrar.CalcularGasto;
+var
+  GastoArCondicionado :string;
+  GastoVentilador: string;
+  GastoTv: string;
+  GastoGeladeira: string;
+  GastoChuveiro: string;
+  GastoSecadorDeCabelo: string;
+  GastoComputador: string;
+  GastoFerroDePassar: string;
+  GastoLampada: string;
+  GastoMicroondas: string;
+  TotalCusto : string;
+  TCalcularGasto : TCalculo;
 begin
+  begin
+    TCalcularGasto := TCalculo.Create;
+    try
+      GastoArCondicionado := TCalcularGasto.CalcularArCondicionado(SpinEditArCondicionadoPoten.Value, SpinEditArCondicionadoQtd.Value,
+      SpinEditArCondicionadoTempoHD.Value, SpinEditArCondicionadoComodos.Value, SpinEditArCondicionadokWh.Value);
+        EditArCondicionadoCusto.Text := GastoArCondicionado;
+
+      GastoVentilador := TCalcularGasto.CalcularVentilador(SpinEditVentiladorPoten.Value, SpinEditVentiladorQtd.Value, SpinEditVentiladorTempHD.Value,
+      SpinEditVentiladorComodos.Value,SpinEditVentiladorkWh.Value);
+        EditVentiladorCusto.Text := GastoVentilador;
+
+     GastoTv := TCalcularGasto.CalcularTv(SpinEditTvPoten.Value, SpinEditTvQtd.Value, SpinEditTvTempHD.Value,
+      SpinEditTvComodos.Value,SpinEditTvkWh.Value);
+        EditTvCusto.Text := GastoTv;
+
+      GastoGeladeira := TCalcularGasto.CalcularGeladeira(SpinEditGeladeiraPoten.Value, SpinEditGeladeiraQtd.Value, SpinEditGeladeiraTempHD.Value,
+      SpinEditGeladeiraComodos.Value,SpinEditGeladeirakWh.Value);
+        EditGeladeiraCusto.Text := GastoGeladeira;
+
+      GastoChuveiro := TCalcularGasto.CalcularChuveiro(SpinEditChuveiroPoten.Value, SpinEditChuveiroQtd.Value, SpinEditChuveiroTempHD.Value,
+      SpinEditChuveiroComodos.Value,SpinEditChuveirokWh.Value);
+        EditChuveiroCusto.Text := GastoChuveiro;
+
+      GastoSecadorDeCabelo := TCalcularGasto.CalcularSecadorDeCabelo(SpinEditSecadorCabeloPoten.Value, SpinEditSecadorCabeloQtd.Value, SpinEditSecadorCabeloTempHD.Value,
+      SpinEditSecadorCabeloComodos.Value,SpinEditSecadorCabelokWh.Value);
+        EditSecadorCabeloCusto.Text := GastoSecadorDeCabelo;
+
+      GastoComputador := TCalcularGasto.CalcularComputador(SpinEditComputadorPoten.Value, SpinEditComputadorQtd.Value, SpinEditComputadorTempHD.Value,
+      SpinEditComputadorComodos.Value,SpinEditComputadorkWh.Value);
+        EditComputadorCusto.Text := GastoComputador;
+
+      GastoFerroDePassar := TCalcularGasto.CalcularFerroDePassar(SpinEditFerroPassarPoten.Value, SpinEditFerroPassarQtd.Value, SpinEditFerroPassarTempHD.Value,
+      SpinEditFerroPassarComodos.Value,SpinEditFerroPassarkWh.Value);
+        EditFerroPassarCusto.Text := GastoFerroDePassar;
+
+      GastoLampada := TCalcularGasto.CalcularLampada(SpinEditLampadaPoten.Value, SpinEditLampadaQtd.Value, SpinEditLampadaTempHD.Value,
+      SpinEditLampadaComodos.Value,SpinEditLampadakWh.Value);
+        EditLampadaCusto.Text := GastoLampada;
+
+      GastoMicroondas := TCalcularGasto.CalcularMicroondas(SpinEditMicroondasPoten.Value, SpinEditMicroondasQtd.Value, SpinEditMicroondasTempHD.Value,
+      SpinEditMicroondasComodos.Value,SpinEditMicroondaskWh.Value);
+        EditMicroondasCusto.Text := GastoMicroondas;
+
+      TotalCusto := TCalcularGasto.CalcularTotal(GastoArCondicionado, GastoVentilador, GastoTv, GastoGeladeira, GastoChuveiro); // Colocar o que faltou aq
+      EditTotalCusto.Text := TotalCusto;
+       // Outro edit para receber gasto em kWh;
+      // arrumar alguns erros que surgiram
+    finally
+      TCalcularGasto.Free;
+    end;
+  end;
+
 
 end;
 
@@ -222,7 +299,7 @@ begin
   SpinEditArCondicionadoPoten.ReadOnly := true;
   SpinEditVentiladorPoten.ReadOnly := true;
   SpinEditTvPoten.ReadOnly := true;
-  SpinEditGeladeiraQtd.ReadOnly := true;
+  SpinEditGeladeiraPoten.ReadOnly := true;
   SpinEditChuveiroPoten.ReadOnly := true;
   SpinEditSecadorCabeloPoten.ReadOnly := true;
   SpinEditComputadorPoten.ReadOnly := true;
@@ -242,7 +319,7 @@ begin
   SpinEditSecadorCabeloTempHD.ReadOnly := True;
   SpinEditComputadorTempHD.ReadOnly := True;
   SpinEditFerroPassarTempHD.ReadOnly := True;
-  SpinEditlLampadaTempHD.ReadOnly := True;
+  SpinEditLampadaTempHD.ReadOnly := True;
   SpinEditMicroondasTempHD.ReadOnly := True;
 end;
 
@@ -266,7 +343,7 @@ begin
   AtivarGroupBoxAparelhos;
 end;
 
-procedure TFrmCadastrar.RadioButtonMensalClick(Sender: TObject);
+procedure TFrmCadastrar.RadioBtnMensalClick(Sender: TObject);
 begin
   AtribuirTempoMensa710H;
   DesabilitarAlterarTempo;
@@ -278,7 +355,7 @@ begin
   SpinEditArCondicionadoPoten.Value := 950;
   SpinEditVentiladorPoten.Value := 200;
   SpinEditTvPoten.Value := 175;
-  SpinEditGeladeiraQtd.Value := 350;
+  SpinEditGeladeiraPoten.Value := 350;
   SpinEditChuveiroPoten.Value := 850;
   SpinEditSecadorCabeloPoten.Value := 265;
   SpinEditComputadorPoten.Value := 330;
@@ -286,5 +363,7 @@ begin
   SpinEditLampadaPoten.Value := 110;
   SpinEditMicroondasPoten.Value := 220;
 end;
-
+ {Adiciona um campo para fazer a comparação
+ de bandeira tarifaria, com se o edit estiver vazio
+ e salvar em txt}
 end.

@@ -19,7 +19,7 @@ object FrmCadastrar: TFrmCadastrar
   TextHeight = 13
   object GroupBoxAparelhos: TGroupBox
     Left = 8
-    Top = 58
+    Top = 68
     Width = 753
     Height = 481
     Caption = 'Aparelhos'
@@ -301,7 +301,7 @@ object FrmCadastrar: TFrmCadastrar
       ReadOnly = True
       TabOrder = 17
     end
-    object EditlLampadaCusto: TEdit
+    object EditLampadaCusto: TEdit
       Left = 616
       Top = 403
       Width = 121
@@ -507,7 +507,7 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 37
       Value = 0
     end
-    object SpinEditlLampadaTempHD: TSpinEdit
+    object SpinEditLampadaTempHD: TSpinEdit
       Left = 343
       Top = 403
       Width = 50
@@ -577,7 +577,7 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 44
       Value = 0
     end
-    object SpinEdiSecadorCabeloComodos: TSpinEdit
+    object SpinEditSecadorCabeloComodos: TSpinEdit
       Left = 436
       Top = 280
       Width = 48
@@ -677,7 +677,7 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 54
       Value = 0
     end
-    object SpinEditSecadorDeCabelokWh: TSpinEdit
+    object SpinEditSecadorCabelokWh: TSpinEdit
       Left = 530
       Top = 280
       Width = 48
@@ -745,14 +745,14 @@ object FrmCadastrar: TFrmCadastrar
     TabOrder = 2
     OnClick = RadioBtnDiarioClick
   end
-  object RadioButtonMensal: TRadioButton
+  object RadioBtnMensal: TRadioButton
     Left = 67
     Top = 24
     Width = 60
     Height = 17
     Caption = 'Mensal'
     TabOrder = 3
-    OnClick = RadioButtonMensalClick
+    OnClick = RadioBtnMensalClick
   end
   object RadioBtnPersonalizado: TRadioButton
     Left = 126
@@ -763,13 +763,115 @@ object FrmCadastrar: TFrmCadastrar
     TabOrder = 4
     OnClick = RadioBtnPersonalizadoClick
   end
-  object BtnCalcular: TBitBtn
-    Left = 676
+  object GroupBoxFuncionalidades: TGroupBox
+    Left = 395
     Top = 8
-    Width = 75
-    Height = 44
-    Caption = 'C'#225'lcular'
+    Width = 361
+    Height = 54
+    Caption = 'Funcionalidades'
     TabOrder = 5
-    OnClick = BtnCalcularClick
+    object BtnCalcular: TBitBtn
+      Left = 281
+      Top = 10
+      Width = 76
+      Height = 41
+      Caption = 'C'#225'lcular'
+      TabOrder = 0
+      OnClick = BtnCalcularClick
+    end
+    object BtnSalvarTXT: TBitBtn
+      Left = 95
+      Top = 10
+      Width = 75
+      Height = 41
+      Caption = 'Salvar'#13'C'#225'lculo (.txt)'
+      TabOrder = 1
+      OnClick = BtnCalcularClick
+    end
+    object BtnBandeiraTarifaria: TBitBtn
+      Left = 177
+      Top = 10
+      Width = 97
+      Height = 41
+      Caption = 'Verificar'#13'Bandeira Tarif'#225'ria'
+      TabOrder = 2
+      OnClick = BtnCalcularClick
+    end
+    object BtnConsultar: TBitBtn
+      Left = 7
+      Top = 13
+      Width = 80
+      Height = 38
+      Caption = 'Consultar'#13'Gastos'
+      TabOrder = 3
+      OnClick = BtnCalcularClick
+    end
+  end
+  object GroupBoxGastoTotal: TGroupBox
+    Left = 8
+    Top = 544
+    Width = 748
+    Height = 49
+    Caption = 'Resultado'
+    Enabled = False
+    TabOrder = 6
+    object LabelTotalGasto: TLabel
+      Left = 14
+      Top = 19
+      Width = 59
+      Height = 13
+      Caption = 'Gasto Total:'
+    end
+    object LabelValorRS: TLabel
+      Left = 593
+      Top = 19
+      Width = 17
+      Height = 13
+      Caption = 'R$:'
+    end
+    object LabelkWhTotal: TLabel
+      Left = 497
+      Top = 18
+      Width = 25
+      Height = 13
+      Caption = 'kWh:'
+    end
+    object EditTotalkWh: TEdit
+      Left = 530
+      Top = 16
+      Width = 49
+      Height = 21
+      TabOrder = 0
+    end
+    object EditTotalCusto: TEdit
+      Left = 616
+      Top = 16
+      Width = 121
+      Height = 21
+      TabOrder = 1
+    end
+  end
+  object GroupBoxResultadoConsulta: TGroupBox
+    Left = 227
+    Top = 4
+    Width = 157
+    Height = 65
+    Caption = 'Resultado da Consulta'
+    Enabled = False
+    TabOrder = 7
+    object LabelValorFinalConsulta: TLabel
+      Left = 23
+      Top = 18
+      Width = 109
+      Height = 13
+      Caption = 'Valor final da consulta:'
+    end
+    object EditResultadoConsulta: TEdit
+      Left = 21
+      Top = 37
+      Width = 118
+      Height = 21
+      TabOrder = 0
+    end
   end
 end
