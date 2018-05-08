@@ -627,106 +627,6 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 49
       Value = 0
     end
-    object SpinEditArCondicionadokWh: TSpinEdit
-      Left = 532
-      Top = 56
-      Width = 49
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 50
-      Value = 0
-    end
-    object SpinEditVentiladorkWh: TSpinEdit
-      Left = 531
-      Top = 105
-      Width = 48
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 51
-      Value = 0
-    end
-    object SpinEditTvkWh: TSpinEdit
-      Left = 533
-      Top = 153
-      Width = 48
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 52
-      Value = 0
-    end
-    object SpinEditGeladeirakWh: TSpinEdit
-      Left = 531
-      Top = 193
-      Width = 48
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 53
-      Value = 0
-    end
-    object SpinEditChuveirokWh: TSpinEdit
-      Left = 533
-      Top = 235
-      Width = 50
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 54
-      Value = 0
-    end
-    object SpinEditSecadorCabelokWh: TSpinEdit
-      Left = 530
-      Top = 280
-      Width = 48
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 55
-      Value = 0
-    end
-    object SpinEditComputadorkWh: TSpinEdit
-      Left = 530
-      Top = 319
-      Width = 46
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 56
-      Value = 0
-    end
-    object SpinEditFerroPassarkWh: TSpinEdit
-      Left = 530
-      Top = 361
-      Width = 48
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 57
-      Value = 0
-    end
-    object SpinEditLampadakWh: TSpinEdit
-      Left = 531
-      Top = 403
-      Width = 50
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 58
-      Value = 0
-    end
-    object SpinEditMicroondaskWh: TSpinEdit
-      Left = 531
-      Top = 448
-      Width = 48
-      Height = 22
-      MaxValue = 0
-      MinValue = 0
-      TabOrder = 59
-      Value = 0
-    end
   end
   object RadioGroupTpSimulacao: TRadioGroup
     Left = 8
@@ -830,16 +730,16 @@ object FrmCadastrar: TFrmCadastrar
       Caption = 'R$:'
     end
     object LabelkWhTotal: TLabel
-      Left = 497
+      Left = 483
       Top = 18
       Width = 25
       Height = 13
       Caption = 'kWh:'
     end
     object EditTotalkWh: TEdit
-      Left = 530
+      Left = 514
       Top = 16
-      Width = 49
+      Width = 65
       Height = 21
       TabOrder = 0
     end
@@ -873,5 +773,85 @@ object FrmCadastrar: TFrmCadastrar
       Height = 21
       TabOrder = 0
     end
+  end
+  object EditArCondicionadokWh: TEdit
+    Left = 523
+    Top = 124
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 8
+  end
+  object EditVentiladorkWh: TEdit
+    Left = 523
+    Top = 174
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 9
+  end
+  object EditTvkWh: TEdit
+    Left = 523
+    Top = 221
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 10
+  end
+  object EditGeladeirakWh: TEdit
+    Left = 523
+    Top = 261
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 11
+  end
+  object EditChuveirokWh: TEdit
+    Left = 523
+    Top = 305
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 12
+  end
+  object EditSecadorDeCabelokWh: TEdit
+    Left = 523
+    Top = 348
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 13
+  end
+  object EditComputadorkWh: TEdit
+    Left = 523
+    Top = 390
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 14
+  end
+  object EditFerroDePassarkWh: TEdit
+    Left = 523
+    Top = 429
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 15
+  end
+  object EditLampadakWh: TEdit
+    Left = 523
+    Top = 471
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 16
+  end
+  object EditMicroondaskWh: TEdit
+    Left = 523
+    Top = 516
+    Width = 70
+    Height = 21
+    ReadOnly = True
+    TabOrder = 17
   end
 end
