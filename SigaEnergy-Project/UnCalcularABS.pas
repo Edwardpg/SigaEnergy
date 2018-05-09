@@ -18,8 +18,6 @@ type
     function CalcularLampada(Potencia,Qtd,Tempo,Comodos: integer):string; virtual; abstract;
     function CalcularMicroondas(Potencia,Qtd,Tempo,Comodos: integer):string; virtual; abstract;
     function CalcularGastoEmDinheiro(Eletrodomestico: string):string; virtual; abstract;
-    function CalcularTotal(ArCondicionado,Ventilador,Tv, Geladeira, Chuveiro, SecadorDeCabelo, Computador,
-      FerroDePassar, Lampada, Microondas : string):string; virtual; abstract;
     const
       ValorFormulakWh = 1000;
       ValorFormulaEmDinheiro = 0.30;

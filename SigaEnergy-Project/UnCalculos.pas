@@ -30,8 +30,6 @@ type
     function CalcularMicroondas(Potencia, Qtd, Tempo, Comodos: integer): string;
         override;
     function CalcularGastoEmDinheiro(Eletrodomestico: string): string; override;
-    function CalcularTotal(ArCondicionado,Ventilador,Tv, Geladeira, Chuveiro, SecadorDeCabelo, Computador,
-      FerroDePassar, Lampada, Microondas : string): string; override;
     destructor Destroy; override;
   end;
 
@@ -107,14 +105,6 @@ begin
   inherited;
   ResultadoParcial := (Potencia * Qtd * Tempo * Comodos) / ValorFormulakWh;
   Result := FloatToStr(ResultadoParcial);
-end;
-
-function TCalculo.CalcularTotal(ArCondicionado,Ventilador,Tv, Geladeira, Chuveiro, SecadorDeCabelo, Computador,
-      FerroDePassar, Lampada, Microondas : string): string;
-begin
-  inherited;
-  Result := ArCondicionado + Ventilador + Tv + Geladeira + Chuveiro + SecadorDeCabelo + Computador
-      + FerroDePassar + Lampada + Microondas;
 end;
 
 function TCalculo.CalcularTv(Potencia, Qtd, Tempo, Comodos: integer): string;
