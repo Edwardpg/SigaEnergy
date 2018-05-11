@@ -106,6 +106,7 @@ type
     EditFerroDePassarkWh: TEdit;
     EditLampadakWh: TEdit;
     EditMicroondaskWh: TEdit;
+    procedure BtnBandeiraTarifariaClick(Sender: TObject);
     procedure RadioBtnDiarioClick(Sender: TObject);
     procedure RadioBtnMensalClick(Sender: TObject);
     procedure RadioBtnPersonalizadoClick(Sender: TObject);
@@ -125,7 +126,11 @@ type
     procedure SetarDefaultValorPotencia;
     procedure DesabilitarAlterarPotencia;
     procedure DesabilitarAlterarkWh;
+    procedure CriarFormConsultarBandeira;
     function CalcularGasto: string;
+  private const
+    FNaoPermitirConsultaBandeira = 'Desculpa mas para efetuar uma consulta de bandeira Tarifarias' +
+    'é necessário ' + ' efetuar uma simulação de gasto antes';
   end;
 
 var
@@ -136,7 +141,7 @@ implementation
 {$R *.dfm}
 
 uses
- UnCalculos;
+ UnCalculos, UnBandeirasTarifarias;
 
 { TFrmCadastrar }
 
@@ -206,6 +211,13 @@ begin
   SpinEditMicroondasTempHD.Value:= FQtdHora;
   BtnCalcular.Caption := 'Cálculo'#13'Personalizado';
 end;
+
+procedure TFrmCadastrar.BtnBandeiraTarifariaClick(Sender: TObject);
+begin
+  CriarFormConsultarBandeira;
+end;
+
+
 
 procedure TFrmCadastrar.BtnCalcularClick(Sender: TObject);
 begin
@@ -387,6 +399,25 @@ begin
   end;
 
 
+end;
+
+procedure TFrmCadastrar.CriarFormConsultarBandeira;
+var
+  NewForm : TFrmBandeiraTarifaria;
+begin
+  if (EditTotalkWh.Text <> '') and (EditTotalkWh.Text <> IntToStr(0))then
+  begin
+  NewForm := TFrmBandeiraTarifaria.Create(nil);
+  try
+  NewForm.EditTotalGastokWhCadastrada.Text := EditTotalkWh.Text;
+  NewForm.EditTotalGastoReaisCadastrado.Text := EditTotalCusto.Text;
+  NewForm.ShowModal;
+  finally
+  NewForm.Free;
+  end;
+  end
+  else
+  MessageDlg(FNaoPermitirConsultaBandeira, mtError, mbOKCancel, 1);
 end;
 
 procedure TFrmCadastrar.DesabilitarAlterarkWh;

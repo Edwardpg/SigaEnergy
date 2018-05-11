@@ -671,11 +671,11 @@ object FrmCadastrar: TFrmCadastrar
     Caption = 'Funcionalidades'
     TabOrder = 5
     object BtnCalcular: TBitBtn
-      Left = 281
+      Left = 279
       Top = 10
       Width = 76
       Height = 41
-      Caption = 'C'#225'lcular'
+      Caption = 'Calcular'
       TabOrder = 0
       OnClick = BtnCalcularClick
     end
@@ -684,18 +684,17 @@ object FrmCadastrar: TFrmCadastrar
       Top = 10
       Width = 75
       Height = 41
-      Caption = 'Salvar'#13'C'#225'lculo (.txt)'
+      Caption = 'Salvar'#13'Calculo (.txt)'
       TabOrder = 1
-      OnClick = BtnCalcularClick
     end
     object BtnBandeiraTarifaria: TBitBtn
-      Left = 177
+      Left = 176
       Top = 10
       Width = 97
       Height = 41
       Caption = 'Verificar'#13'Bandeira Tarif'#225'ria'
       TabOrder = 2
-      OnClick = BtnCalcularClick
+      OnClick = BtnBandeiraTarifariaClick
     end
     object BtnConsultar: TBitBtn
       Left = 7
@@ -704,7 +703,6 @@ object FrmCadastrar: TFrmCadastrar
       Height = 38
       Caption = 'Consultar'#13'Gastos'
       TabOrder = 3
-      OnClick = BtnCalcularClick
     end
   end
   object GroupBoxGastoTotal: TGroupBox
