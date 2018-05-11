@@ -1869,22 +1869,22 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       ReadOnly = True
       TabOrder = 0
     end
-    object BtnCalcular: TButton
-      Left = 644
-      Top = 10
-      Width = 97
-      Height = 44
-      Caption = 'Calcular'#13'Bandeira Tarif'#225'ria'
-      TabOrder = 1
-      OnClick = BtnCalcularClick
-    end
     object EditTotalGastoReaisCadastrado: TEdit
       Left = 439
       Top = 21
       Width = 121
       Height = 21
       ReadOnly = True
+      TabOrder = 1
+    end
+    object BtnCalcular: TBitBtn
+      Left = 658
+      Top = 10
+      Width = 99
+      Height = 44
+      Caption = 'Calcular'#13'Bandeira T'#225'rifaria'
       TabOrder = 2
+      OnClick = BtnCalcularClick
     end
   end
 end

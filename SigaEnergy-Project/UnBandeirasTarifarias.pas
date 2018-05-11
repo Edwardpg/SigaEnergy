@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.jpeg;
+  Vcl.Imaging.jpeg, Vcl.Buttons;
 
 type
   TFrmBandeiraTarifaria = class(TForm)
@@ -32,9 +32,9 @@ type
     EditBandeiraVermelhaEscuro: TEdit;
     GroupBoxDetalhesTotasBandeira: TGroupBox;
     GroupBoxkWh_E_Calcular: TGroupBox;
-    BtnCalcular: TButton;
     EditTotalGastoReaisCadastrado: TEdit;
     LabelTotalGastoReaisCadastrado: TLabel;
+    BtnCalcular: TBitBtn;
     procedure BtnCalcularClick(Sender: TObject);
   private
     { Private declarations }
