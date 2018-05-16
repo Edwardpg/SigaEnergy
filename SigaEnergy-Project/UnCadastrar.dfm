@@ -4,7 +4,7 @@ object FrmCadastrar: TFrmCadastrar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Cadastrar Eletrodom'#233'sticos'
-  ClientHeight = 598
+  ClientHeight = 635
   ClientWidth = 764
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,132 +18,192 @@ object FrmCadastrar: TFrmCadastrar
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBoxAparelhos: TGroupBox
-    Left = 8
+    Left = 6
     Top = 68
     Width = 753
     Height = 481
     Caption = 'Aparelhos'
     Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 0
     object LabelArCondicionado: TLabel
       Left = 15
       Top = 65
-      Width = 78
+      Width = 91
       Height = 13
       Caption = 'Ar Condicionado'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelVentilador: TLabel
       Left = 15
       Top = 108
-      Width = 48
+      Width = 58
       Height = 13
       Caption = 'Ventilador'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelTv: TLabel
       Left = 15
       Top = 156
-      Width = 12
+      Width = 14
       Height = 13
       Caption = 'Tv'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelGeladeira: TLabel
       Left = 15
       Top = 196
-      Width = 45
+      Width = 54
       Height = 13
       Caption = 'Geladeira'
     end
     object LabelChuveiro: TLabel
       Left = 15
       Top = 240
-      Width = 43
+      Width = 50
       Height = 13
       Caption = 'Chuveiro'
     end
     object LabelSecadorCabelo: TLabel
       Left = 15
       Top = 283
-      Width = 90
+      Width = 104
       Height = 13
       Caption = 'Secador de Cabelo'
     end
     object LabelComputador: TLabel
       Left = 17
       Top = 322
-      Width = 59
+      Width = 70
       Height = 13
       Caption = 'Computador'
     end
     object LabelFerroPassar: TLabel
       Left = 15
       Top = 366
-      Width = 76
+      Width = 88
       Height = 13
       Caption = 'Ferro de Passar'
     end
     object LabelLampada: TLabel
       Left = 15
       Top = 412
-      Width = 43
+      Width = 52
       Height = 13
       Caption = 'L'#226'mpada'
     end
     object LabelMicroondas: TLabel
       Left = 15
       Top = 451
-      Width = 54
+      Width = 65
       Height = 13
       Caption = 'Microondas'
     end
     object LabelPotencia: TLabel
-      Left = 147
+      Left = 138
       Top = 21
-      Width = 62
+      Width = 73
       Height = 13
       Caption = 'Potencia (W)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelTempoUsoHoraOuDia: TLabel
-      Left = 327
+      Left = 311
       Top = 20
-      Width = 86
+      Width = 103
       Height = 13
       Caption = 'Tempo horas / dia'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelQtd: TLabel
-      Left = 242
+      Left = 233
       Top = 20
-      Width = 56
+      Width = 65
       Height = 13
       Caption = 'Quantidade'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelkWh: TLabel
       Left = 537
       Top = 20
-      Width = 21
+      Width = 25
       Height = 13
       Caption = 'kWh'
     end
     object LabelCusto: TLabel
       Left = 616
       Top = 20
-      Width = 44
+      Width = 50
       Height = 13
       Caption = 'Custo R$'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelComodosQtd: TLabel
       Left = 427
       Top = 20
-      Width = 73
+      Width = 85
       Height = 13
       Caption = 'C'#244'modos (Qtd)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object SpinEditArCondicionadoQtd: TSpinEdit
       Left = 246
       Top = 56
       Width = 49
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 0
       Value = 0
     end
@@ -152,8 +212,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 105
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 1
       Value = 0
     end
@@ -162,8 +228,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 153
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 2
       Value = 0
     end
@@ -172,8 +244,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 193
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 3
       Value = 0
     end
@@ -182,8 +260,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 236
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 4
       Value = 0
     end
@@ -192,8 +276,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 281
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 5
       Value = 0
     end
@@ -202,8 +292,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 319
       Width = 46
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 6
       Value = 0
     end
@@ -212,8 +308,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 363
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 7
       Value = 0
     end
@@ -222,8 +324,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 403
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 8
       Value = 0
     end
@@ -232,8 +340,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 448
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 9
       Value = 0
     end
@@ -242,6 +356,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 56
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 10
     end
@@ -250,6 +370,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 106
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 11
     end
@@ -258,6 +384,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 153
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 12
     end
@@ -266,6 +398,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 193
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 13
     end
@@ -274,6 +412,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 237
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 14
     end
@@ -282,6 +426,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 280
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 15
     end
@@ -290,6 +440,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 322
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 16
     end
@@ -298,6 +454,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 361
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 17
     end
@@ -306,6 +468,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 403
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 18
     end
@@ -314,6 +482,12 @@ object FrmCadastrar: TFrmCadastrar
       Top = 448
       Width = 121
       Height = 21
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       ReadOnly = True
       TabOrder = 19
     end
@@ -322,8 +496,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 56
       Width = 49
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 20
       Value = 0
@@ -333,8 +513,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 105
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 21
       Value = 0
@@ -344,8 +530,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 153
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 22
       Value = 0
@@ -355,8 +547,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 193
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 23
       Value = 0
@@ -366,8 +564,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 236
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 24
       Value = 0
@@ -377,8 +581,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 281
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 25
       Value = 0
@@ -388,8 +598,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 322
       Width = 46
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 26
       Value = 0
@@ -399,8 +615,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 363
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 27
       Value = 0
@@ -410,8 +632,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 403
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 28
       Value = 0
@@ -421,8 +649,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 448
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       ReadOnly = True
       TabOrder = 29
       Value = 0
@@ -432,8 +666,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 56
       Width = 49
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 30
       Value = 0
     end
@@ -442,8 +682,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 105
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 31
       Value = 0
     end
@@ -452,8 +698,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 153
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 32
       Value = 0
     end
@@ -462,8 +714,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 193
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 33
       Value = 0
     end
@@ -472,8 +730,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 235
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 34
       Value = 0
     end
@@ -482,8 +746,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 280
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 35
       Value = 0
     end
@@ -492,8 +762,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 322
       Width = 46
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 36
       Value = 0
     end
@@ -502,8 +778,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 363
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 37
       Value = 0
     end
@@ -512,8 +794,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 403
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 38
       Value = 0
     end
@@ -522,8 +810,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 448
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 39
       Value = 0
     end
@@ -532,8 +826,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 56
       Width = 49
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 40
       Value = 0
     end
@@ -542,8 +842,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 105
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 41
       Value = 0
     end
@@ -552,8 +858,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 153
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 42
       Value = 0
     end
@@ -562,8 +874,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 193
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 43
       Value = 0
     end
@@ -572,8 +890,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 235
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 44
       Value = 0
     end
@@ -582,8 +906,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 280
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 45
       Value = 0
     end
@@ -592,8 +922,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 322
       Width = 46
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 46
       Value = 0
     end
@@ -602,8 +938,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 363
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 47
       Value = 0
     end
@@ -612,8 +954,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 403
       Width = 50
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 48
       Value = 0
     end
@@ -622,8 +970,14 @@ object FrmCadastrar: TFrmCadastrar
       Top = 448
       Width = 48
       Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
       MaxValue = 0
       MinValue = 0
+      ParentFont = False
       TabOrder = 49
       Value = 0
     end
@@ -632,13 +986,13 @@ object FrmCadastrar: TFrmCadastrar
     Left = 8
     Top = 8
     Width = 211
-    Height = 41
+    Height = 54
     Caption = 'Tipo de Simula'#231#227'o'
     TabOrder = 1
   end
   object RadioBtnDiario: TRadioButton
     Left = 16
-    Top = 24
+    Top = 29
     Width = 47
     Height = 17
     Caption = 'Di'#225'rio'
@@ -647,7 +1001,7 @@ object FrmCadastrar: TFrmCadastrar
   end
   object RadioBtnMensal: TRadioButton
     Left = 67
-    Top = 24
+    Top = 29
     Width = 60
     Height = 17
     Caption = 'Mensal'
@@ -656,7 +1010,7 @@ object FrmCadastrar: TFrmCadastrar
   end
   object RadioBtnPersonalizado: TRadioButton
     Left = 126
-    Top = 24
+    Top = 29
     Width = 89
     Height = 17
     Caption = 'Personalizado'
@@ -706,39 +1060,77 @@ object FrmCadastrar: TFrmCadastrar
     end
   end
   object GroupBoxGastoTotal: TGroupBox
-    Left = 8
-    Top = 544
-    Width = 748
-    Height = 49
+    Left = 6
+    Top = 549
+    Width = 753
+    Height = 81
     Caption = 'Resultado'
     Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 6
     object LabelTotalGasto: TLabel
       Left = 14
       Top = 19
-      Width = 59
+      Width = 310
       Height = 13
-      Caption = 'Gasto Total:'
+      Caption = 'Gasto Total sem atribuir Taxa das Bandeiras Tarif'#225'rias:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelValorRS: TLabel
-      Left = 593
+      Left = 590
       Top = 19
-      Width = 17
+      Width = 18
       Height = 13
       Caption = 'R$:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object LabelkWhTotal: TLabel
-      Left = 483
-      Top = 18
-      Width = 25
+      Left = 473
+      Top = 20
+      Width = 28
       Height = 13
       Caption = 'kWh:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LabelTotalGastoTaxaBandeiraCalculada: TLabel
+      Left = 14
+      Top = 52
+      Width = 337
+      Height = 13
+      Caption = 'Gasto Total j'#225' atribu'#237'do Taxa das Bandeiras Tarif'#225'rias (R$) :'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object EditTotalkWh: TEdit
       Left = 514
       Top = 16
       Width = 65
       Height = 21
+      ReadOnly = True
       TabOrder = 0
     end
     object EditTotalCusto: TEdit
@@ -746,7 +1138,16 @@ object FrmCadastrar: TFrmCadastrar
       Top = 16
       Width = 121
       Height = 21
+      ReadOnly = True
       TabOrder = 1
+    end
+    object EditGastoTotalAtribuidoTaxaBandeira: TEdit
+      Left = 616
+      Top = 49
+      Width = 121
+      Height = 21
+      ReadOnly = True
+      TabOrder = 2
     end
   end
   object GroupBoxResultadoConsulta: TGroupBox
@@ -769,6 +1170,7 @@ object FrmCadastrar: TFrmCadastrar
       Top = 37
       Width = 118
       Height = 21
+      ReadOnly = True
       TabOrder = 0
     end
   end

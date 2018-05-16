@@ -106,6 +106,8 @@ type
     EditFerroDePassarkWh: TEdit;
     EditLampadakWh: TEdit;
     EditMicroondaskWh: TEdit;
+    EditGastoTotalAtribuidoTaxaBandeira: TEdit;
+    LabelTotalGastoTaxaBandeiraCalculada: TLabel;
     procedure BtnBandeiraTarifariaClick(Sender: TObject);
     procedure RadioBtnDiarioClick(Sender: TObject);
     procedure RadioBtnMensalClick(Sender: TObject);

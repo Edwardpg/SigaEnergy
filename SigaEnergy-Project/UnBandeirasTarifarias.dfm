@@ -14,6 +14,8 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBoxTotalBandeira: TGroupBox
@@ -497,6 +499,7 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
         Top = 244
         Width = 121
         Height = 21
+        Alignment = taRightJustify
         ReadOnly = True
         TabOrder = 0
       end
@@ -906,6 +909,7 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
         Top = 245
         Width = 121
         Height = 21
+        Alignment = taRightJustify
         ReadOnly = True
         TabOrder = 0
       end
@@ -1372,6 +1376,7 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
         Top = 243
         Width = 121
         Height = 21
+        Alignment = taRightJustify
         ReadOnly = True
         TabOrder = 0
       end
@@ -1835,6 +1840,7 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
         Top = 244
         Width = 121
         Height = 21
+        Alignment = taRightJustify
         ReadOnly = True
         TabOrder = 0
       end
@@ -1866,6 +1872,7 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       Top = 21
       Width = 121
       Height = 21
+      Alignment = taRightJustify
       ReadOnly = True
       TabOrder = 0
     end
@@ -1874,6 +1881,7 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       Top = 21
       Width = 121
       Height = 21
+      Alignment = taRightJustify
       ReadOnly = True
       TabOrder = 1
     end
