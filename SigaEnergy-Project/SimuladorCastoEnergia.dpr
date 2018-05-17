@@ -7,15 +7,16 @@ uses
   UnCadastrar in 'UnCadastrar.pas' {FrmCadastrar},
   UnCalculos in 'UnCalculos.pas',
   UnBandeirasTarifarias in 'UnBandeirasTarifarias.pas' {FrmBandeiraTarifaria},
-  UnCalculoBandeiras in 'UnCalculoBandeiras.pas';
+  UnCalculoBandeiras in 'UnCalculoBandeiras.pas',
+  UnGravarTXT in 'UnGravarTXT.pas',
+  UnSingleton in 'UnSingleton.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TFrmSigaEnergy, FrmSigaEnergy);
-  Application.CreateForm(TFrmCadastrar, FrmCadastrar);
-  Application.CreateForm(TFrmBandeiraTarifaria, FrmBandeiraTarifaria);
   Application.Run;
 end.

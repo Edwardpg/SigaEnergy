@@ -56,7 +56,7 @@ procedure TFrmSigaEnergy.CriarFormCadastrar;
 var
   NewForm : TFrmCadastrar;
 begin
-  NewForm := TFrmCadastrar.Create(nil);
+  NewForm := TFrmCadastrar.Create(self);
   try
   NewForm.ShowModal;
   finally

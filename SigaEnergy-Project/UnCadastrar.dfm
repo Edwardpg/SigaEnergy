@@ -1040,6 +1040,7 @@ object FrmCadastrar: TFrmCadastrar
       Height = 41
       Caption = 'Salvar'#13'Calculo (.txt)'
       TabOrder = 1
+      OnClick = BtnSalvarTXTClick
     end
     object BtnBandeiraTarifaria: TBitBtn
       Left = 176
@@ -1051,12 +1052,13 @@ object FrmCadastrar: TFrmCadastrar
       OnClick = BtnBandeiraTarifariaClick
     end
     object BtnConsultar: TBitBtn
-      Left = 7
+      Left = 3
       Top = 13
       Width = 80
       Height = 38
       Caption = 'Consultar'#13'Gastos'
       TabOrder = 3
+      OnClick = BtnConsultarClick
     end
   end
   object GroupBoxGastoTotal: TGroupBox
@@ -1151,8 +1153,8 @@ object FrmCadastrar: TFrmCadastrar
     end
   end
   object GroupBoxResultadoConsulta: TGroupBox
-    Left = 227
-    Top = 4
+    Left = 229
+    Top = 2
     Width = 157
     Height = 65
     Caption = 'Resultado da Consulta'
@@ -1165,11 +1167,13 @@ object FrmCadastrar: TFrmCadastrar
       Height = 13
       Caption = 'Valor final da consulta:'
     end
-    object EditResultadoConsulta: TEdit
-      Left = 21
-      Top = 37
-      Width = 118
-      Height = 21
+    object MemoConsulta: TMemo
+      Left = 15
+      Top = 34
+      Width = 129
+      Height = 25
+      Lines.Strings = (
+        '')
       ReadOnly = True
       TabOrder = 0
     end

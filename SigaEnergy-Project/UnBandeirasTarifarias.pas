@@ -55,6 +55,8 @@ type
     FValorBandeiraVermelhaEscura = 5;
   public
     function CalcularBandeira: string;
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
   end;
 
 var
@@ -118,13 +120,25 @@ begin
   finally
   CalcularBandeira.Free;
   end;
+//  FrmCadastrar.EditGastoTotalAtribuidoTaxaBandeira.Text := EditResultadoCalculado.Text;
+end;
+
+constructor TFrmBandeiraTarifaria.Create(AOwner: TComponent);
+begin
+  inherited;
+  FAtribuirTotalReais := TFrmCadastrar.Create(Self);
+end;
+
+destructor TFrmBandeiraTarifaria.Destroy;
+begin
+  FAtribuirTotalReais.Free;
+  inherited;
 end;
 
 procedure TFrmBandeiraTarifaria.FormClose(Sender: TObject; var Action:
     TCloseAction);
-
 begin
-  Teste;
+  FAtribuirTotalReais.EditGastoTotalAtribuidoTaxaBandeira.Text := EditResultadoCalculado.Text;
 end;
 
 procedure TFrmBandeiraTarifaria.FormShow(Sender: TObject);
@@ -147,7 +161,7 @@ end;
 
 procedure TFrmBandeiraTarifaria.Teste;
 begin
-  FrmCadastrar.EditGastoTotalAtribuidoTaxaBandeira.Text := EditResultadoCalculado.Text;
+//  Teste := EditResultadoCalculado.Text;
 end;
 
 function TFrmBandeiraTarifaria.TrunckWh: Integer;

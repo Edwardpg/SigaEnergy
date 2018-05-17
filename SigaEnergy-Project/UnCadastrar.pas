@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin,
-  Vcl.ExtCtrls, Vcl.Buttons, UnCalcularABS;
+  Vcl.ExtCtrls, Vcl.Buttons, UnCalcularABS, UnGravarTXT, UnSingleton;
 
 type
   EvalidationError = class (Exception);
@@ -92,7 +92,6 @@ type
     LabelTotalGasto: TLabel;
     BtnConsultar: TBitBtn;
     GroupBoxResultadoConsulta: TGroupBox;
-    EditResultadoConsulta: TEdit;
     LabelValorFinalConsulta: TLabel;
     LabelValorRS: TLabel;
     LabelkWhTotal: TLabel;
@@ -108,14 +107,18 @@ type
     EditMicroondaskWh: TEdit;
     EditGastoTotalAtribuidoTaxaBandeira: TEdit;
     LabelTotalGastoTaxaBandeiraCalculada: TLabel;
+    MemoConsulta: TMemo;
     procedure BtnBandeiraTarifariaClick(Sender: TObject);
     procedure RadioBtnDiarioClick(Sender: TObject);
     procedure RadioBtnMensalClick(Sender: TObject);
     procedure RadioBtnPersonalizadoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnCalcularClick(Sender: TObject);
+    procedure BtnConsultarClick(Sender: TObject);
+    procedure BtnSalvarTXTClick(Sender: TObject);
   private
     FCalcular : TCalcular;
+    FGravar : TGravar;
     FQtdHora : Integer;
     FQtdTodosSpinEdit : Integer;
   public
@@ -130,13 +133,18 @@ type
     procedure DesabilitarAlterarkWh;
     procedure CriarFormConsultarBandeira;
     function CalcularGasto: string;
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
   private const
     FNaoPermitirConsultaBandeira = 'Desculpa mas para efetuar uma consulta de bandeira Tarifarias' +
     'é necessário ' + ' efetuar uma simulação de gasto antes';
+    procedure ConsultarTXT;
+    procedure GravarTxt;
   end;
 
 var
   FrmCadastrar: TFrmCadastrar;
+  Singleton: TSingleton;
 
 implementation
 
@@ -237,6 +245,11 @@ begin
   end;
 //  MessageDlg();
   //YeaAnNo : If Yes show Resultado Bandeira tarifaria e Salva todo resultado em .txt
+end;
+
+procedure TFrmCadastrar.BtnSalvarTXTClick(Sender: TObject);
+begin
+  GravarTxt;
 end;
 
 function TFrmCadastrar.CalcularGasto: string;
@@ -403,13 +416,19 @@ begin
 
 end;
 
+constructor TFrmCadastrar.Create(AOwner: TComponent);
+begin
+  inherited;
+  FGravar := TGravar.Create;
+end;
+
 procedure TFrmCadastrar.CriarFormConsultarBandeira;
 var
   NewForm : TFrmBandeiraTarifaria;
 begin
   if (EditTotalkWh.Text <> '') and (EditTotalkWh.Text <> IntToStr(0))then
   begin
-  NewForm := TFrmBandeiraTarifaria.Create(nil);
+  NewForm := TFrmBandeiraTarifaria.Create(self);
   try
   NewForm.EditTotalGastokWhCadastrada.Text := EditTotalkWh.Text;
   NewForm.EditTotalGastoReaisCadastrado.Text := EditTotalCusto.Text;
@@ -465,11 +484,41 @@ begin
   SpinEditMicroondasTempHD.ReadOnly := True;
 end;
 
+destructor TFrmCadastrar.Destroy;
+begin
+  FGravar.Free;
+  inherited;
+end;
+
+procedure TFrmCadastrar.BtnConsultarClick(Sender: TObject);
+begin
+  ConsultarTXT;
+end;
+
+procedure TFrmCadastrar.ConsultarTXT;
+begin
+  MemoConsulta.Clear;
+  try
+  MemoConsulta.Lines.LoadFromFile('D:\Desenvolvimento-Delphi(Edward)\SigaEnergy\ConsultaTXT\Teste.txt');
+  except
+  MemoConsulta.Lines.Add('Erro na abertura do arquivo de consulta !!!');
+  end;
+  Singleton := TSingleton.GetInstance;
+  Singleton.GetFilePath(MemoConsulta.Text);
+end;
+
 procedure TFrmCadastrar.FormShow(Sender: TObject);
 begin
   DesabilitarAlterarPotencia;
   DesabilitarAlterarkWh;
   SetarDefaultValorPotencia;
+//  EditGastoTotalAtribuidoTaxaBandeira.Text := Teste;
+end;
+
+procedure TFrmCadastrar.GravarTxt;
+begin
+  FGravar.GravarTXT('D:\Desenvolvimento-Delphi(Edward)\SigaEnergy\ConsultaTXT\Teste.txt',
+    EditTotalkWh.Text);
 end;
 
 procedure TFrmCadastrar.RadioBtnDiarioClick(Sender: TObject);
@@ -506,7 +555,4 @@ begin
   SpinEditLampadaPoten.Value := 110;
   SpinEditMicroondasPoten.Value := 220;
 end;
-{Adiciona um campo para fazer a comparação
- de bandeira tarifaria, com se o edit estiver vazio
- e salvar em txt}
 end.
