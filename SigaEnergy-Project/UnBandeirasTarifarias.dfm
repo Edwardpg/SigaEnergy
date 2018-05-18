@@ -14,7 +14,6 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -1886,13 +1885,22 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       TabOrder = 1
     end
     object BtnCalcular: TBitBtn
-      Left = 658
+      Left = 570
       Top = 10
       Width = 99
       Height = 44
       Caption = 'Calcular'#13'Bandeira T'#225'rifaria'
       TabOrder = 2
       OnClick = BtnCalcularClick
+    end
+    object BtnSalvarTXT: TBitBtn
+      Left = 674
+      Top = 10
+      Width = 89
+      Height = 44
+      Caption = 'Salvar Calculo'#13'com Tarifa (.txt)'
+      TabOrder = 3
+      OnClick = BtnSalvarTXTClick
     end
   end
 end

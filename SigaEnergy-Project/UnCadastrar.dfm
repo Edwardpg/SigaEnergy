@@ -5,7 +5,7 @@ object FrmCadastrar: TFrmCadastrar
   BorderStyle = bsSingle
   Caption = 'Cadastrar Eletrodom'#233'sticos'
   ClientHeight = 635
-  ClientWidth = 764
+  ClientWidth = 762
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object FrmCadastrar: TFrmCadastrar
   TextHeight = 13
   object GroupBoxAparelhos: TGroupBox
     Left = 6
-    Top = 68
+    Top = 96
     Width = 753
     Height = 481
     Caption = 'Aparelhos'
@@ -981,12 +981,92 @@ object FrmCadastrar: TFrmCadastrar
       TabOrder = 49
       Value = 0
     end
+    object EditArCondicionadokWh: TEdit
+      Left = 514
+      Top = 56
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 50
+    end
+    object EditChuveirokWh: TEdit
+      Left = 514
+      Top = 237
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 51
+    end
+    object EditComputadorkWh: TEdit
+      Left = 514
+      Top = 322
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 52
+    end
+    object EditFerroDePassarkWh: TEdit
+      Left = 514
+      Top = 361
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 53
+    end
+    object EditGeladeirakWh: TEdit
+      Left = 514
+      Top = 193
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 54
+    end
+    object EditLampadakWh: TEdit
+      Left = 514
+      Top = 403
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 55
+    end
+    object EditMicroondaskWh: TEdit
+      Left = 514
+      Top = 451
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 56
+    end
+    object EditSecadorDeCabelokWh: TEdit
+      Left = 514
+      Top = 280
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 57
+    end
+    object EditTvkWh: TEdit
+      Left = 514
+      Top = 153
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 58
+    end
+    object EditVentiladorkWh: TEdit
+      Left = 514
+      Top = 106
+      Width = 70
+      Height = 21
+      ReadOnly = True
+      TabOrder = 59
+    end
   end
   object RadioGroupTpSimulacao: TRadioGroup
     Left = 8
-    Top = 8
-    Width = 211
-    Height = 54
+    Top = 6
+    Width = 104
+    Height = 91
     Caption = 'Tipo de Simula'#231#227'o'
     TabOrder = 1
   end
@@ -1000,8 +1080,8 @@ object FrmCadastrar: TFrmCadastrar
     OnClick = RadioBtnDiarioClick
   end
   object RadioBtnMensal: TRadioButton
-    Left = 67
-    Top = 29
+    Left = 16
+    Top = 52
     Width = 60
     Height = 17
     Caption = 'Mensal'
@@ -1009,8 +1089,8 @@ object FrmCadastrar: TFrmCadastrar
     OnClick = RadioBtnMensalClick
   end
   object RadioBtnPersonalizado: TRadioButton
-    Left = 126
-    Top = 29
+    Left = 16
+    Top = 75
     Width = 89
     Height = 17
     Caption = 'Personalizado'
@@ -1018,44 +1098,44 @@ object FrmCadastrar: TFrmCadastrar
     OnClick = RadioBtnPersonalizadoClick
   end
   object GroupBoxFuncionalidades: TGroupBox
-    Left = 395
-    Top = 8
-    Width = 361
-    Height = 54
+    Left = 118
+    Top = 6
+    Width = 373
+    Height = 91
     Caption = 'Funcionalidades'
     TabOrder = 5
     object BtnCalcular: TBitBtn
-      Left = 279
-      Top = 10
+      Left = 11
+      Top = 18
       Width = 76
-      Height = 41
+      Height = 60
       Caption = 'Calcular'
       TabOrder = 0
       OnClick = BtnCalcularClick
     end
     object BtnSalvarTXT: TBitBtn
-      Left = 95
-      Top = 10
+      Left = 196
+      Top = 18
       Width = 75
-      Height = 41
+      Height = 60
       Caption = 'Salvar'#13'Calculo (.txt)'
       TabOrder = 1
       OnClick = BtnSalvarTXTClick
     end
     object BtnBandeiraTarifaria: TBitBtn
-      Left = 176
-      Top = 10
+      Left = 93
+      Top = 18
       Width = 97
-      Height = 41
+      Height = 60
       Caption = 'Verificar'#13'Bandeira Tarif'#225'ria'
       TabOrder = 2
       OnClick = BtnBandeiraTarifariaClick
     end
     object BtnConsultar: TBitBtn
-      Left = 3
-      Top = 13
+      Left = 278
+      Top = 18
       Width = 80
-      Height = 38
+      Height = 60
       Caption = 'Consultar'#13'Gastos'
       TabOrder = 3
       OnClick = BtnConsultarClick
@@ -1063,9 +1143,9 @@ object FrmCadastrar: TFrmCadastrar
   end
   object GroupBoxGastoTotal: TGroupBox
     Left = 6
-    Top = 549
+    Top = 585
     Width = 753
-    Height = 81
+    Height = 45
     Caption = 'Resultado'
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
@@ -1114,19 +1194,6 @@ object FrmCadastrar: TFrmCadastrar
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object LabelTotalGastoTaxaBandeiraCalculada: TLabel
-      Left = 14
-      Top = 52
-      Width = 337
-      Height = 13
-      Caption = 'Gasto Total j'#225' atribu'#237'do Taxa das Bandeiras Tarif'#225'rias (R$) :'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object EditTotalkWh: TEdit
       Left = 514
       Top = 16
@@ -1143,119 +1210,31 @@ object FrmCadastrar: TFrmCadastrar
       ReadOnly = True
       TabOrder = 1
     end
-    object EditGastoTotalAtribuidoTaxaBandeira: TEdit
-      Left = 616
-      Top = 49
-      Width = 121
-      Height = 21
-      ReadOnly = True
-      TabOrder = 2
-    end
   end
   object GroupBoxResultadoConsulta: TGroupBox
-    Left = 229
-    Top = 2
-    Width = 157
-    Height = 65
+    Left = 497
+    Top = 4
+    Width = 259
+    Height = 95
     Caption = 'Resultado da Consulta'
     Enabled = False
     TabOrder = 7
     object LabelValorFinalConsulta: TLabel
-      Left = 23
+      Left = 8
       Top = 18
       Width = 109
       Height = 13
       Caption = 'Valor final da consulta:'
     end
     object MemoConsulta: TMemo
-      Left = 15
-      Top = 34
-      Width = 129
-      Height = 25
+      Left = 6
+      Top = 37
+      Width = 246
+      Height = 51
       Lines.Strings = (
         '')
       ReadOnly = True
       TabOrder = 0
     end
-  end
-  object EditArCondicionadokWh: TEdit
-    Left = 523
-    Top = 124
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 8
-  end
-  object EditVentiladorkWh: TEdit
-    Left = 523
-    Top = 174
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 9
-  end
-  object EditTvkWh: TEdit
-    Left = 523
-    Top = 221
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 10
-  end
-  object EditGeladeirakWh: TEdit
-    Left = 523
-    Top = 261
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 11
-  end
-  object EditChuveirokWh: TEdit
-    Left = 523
-    Top = 305
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 12
-  end
-  object EditSecadorDeCabelokWh: TEdit
-    Left = 523
-    Top = 348
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 13
-  end
-  object EditComputadorkWh: TEdit
-    Left = 523
-    Top = 390
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 14
-  end
-  object EditFerroDePassarkWh: TEdit
-    Left = 523
-    Top = 429
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 15
-  end
-  object EditLampadakWh: TEdit
-    Left = 523
-    Top = 471
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 16
-  end
-  object EditMicroondaskWh: TEdit
-    Left = 523
-    Top = 516
-    Width = 70
-    Height = 21
-    ReadOnly = True
-    TabOrder = 17
   end
 end

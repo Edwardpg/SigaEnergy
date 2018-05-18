@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin,
-  Vcl.ExtCtrls, Vcl.Buttons, UnCalcularABS, UnGravarTXT, UnSingleton;
+  Vcl.ExtCtrls, Vcl.Buttons, UnCalcularABS, UnGravarTXT, UnSingleton,
+  UnCalculos, System.UITypes;
 
 type
   EvalidationError = class (Exception);
@@ -105,8 +106,6 @@ type
     EditFerroDePassarkWh: TEdit;
     EditLampadakWh: TEdit;
     EditMicroondaskWh: TEdit;
-    EditGastoTotalAtribuidoTaxaBandeira: TEdit;
-    LabelTotalGastoTaxaBandeiraCalculada: TLabel;
     MemoConsulta: TMemo;
     procedure BtnBandeiraTarifariaClick(Sender: TObject);
     procedure RadioBtnDiarioClick(Sender: TObject);
@@ -117,10 +116,11 @@ type
     procedure BtnConsultarClick(Sender: TObject);
     procedure BtnSalvarTXTClick(Sender: TObject);
   private
-    FCalcular : TCalcular;
+    FCalcularGasto : TCalculo;
     FGravar : TGravar;
     FQtdHora : Integer;
-    FQtdTodosSpinEdit : Integer;
+    FComodos : Integer;
+    FQuantidade: Integer;
   public
     procedure AtribuirTempoDiario24H;
     procedure AtribuirTempoMensa710H;
@@ -128,16 +128,23 @@ type
     procedure DesabilitarAlterarTempo;
     procedure AtivarAlterarTempo;
     procedure AtivarGroupBoxAparelhos;
+    procedure DesativarGropoAparelhos;
     procedure SetarDefaultValorPotencia;
     procedure DesabilitarAlterarPotencia;
     procedure DesabilitarAlterarkWh;
+    procedure LimparCampos;
     procedure CriarFormConsultarBandeira;
+    procedure AtivaBotoes;
+    procedure DesativaBotoes;
     function CalcularGasto: string;
+    function DefineParãoSalvaTXT: string;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   private const
     FNaoPermitirConsultaBandeira = 'Desculpa mas para efetuar uma consulta de bandeira Tarifarias' +
     'é necessário ' + ' efetuar uma simulação de gasto antes';
+    FPathArquivo = 'D:\Desenvolvimento-Delphi(Edward)\SigaEnergy\ConsultaTXT\Teste.txt';
+    FErroAoGravar = 'Desculpe mas não foi possivel gravar o arquivo no diretório : ';
     procedure ConsultarTXT;
     procedure GravarTxt;
   end;
@@ -151,9 +158,17 @@ implementation
 {$R *.dfm}
 
 uses
- UnCalculos, UnBandeirasTarifarias;
+ UnBandeirasTarifarias;
 
 { TFrmCadastrar }
+
+procedure TFrmCadastrar.AtivaBotoes;
+begin
+  BtnCalcular.Enabled := True;
+  BtnSalvarTXT.Enabled := True;
+  BtnBandeiraTarifaria.Enabled := True;
+  BtnConsultar.Enabled := True;
+end;
 
 procedure TFrmCadastrar.AtivarAlterarTempo;
 begin
@@ -227,8 +242,6 @@ begin
   CriarFormConsultarBandeira;
 end;
 
-
-
 procedure TFrmCadastrar.BtnCalcularClick(Sender: TObject);
 begin
   if RadioBtnDiario.Checked then
@@ -243,8 +256,6 @@ begin
   begin
     CalcularGasto;
   end;
-//  MessageDlg();
-  //YeaAnNo : If Yes show Resultado Bandeira tarifaria e Salva todo resultado em .txt
 end;
 
 procedure TFrmCadastrar.BtnSalvarTXTClick(Sender: TObject);
@@ -264,19 +275,17 @@ var
   GastoFerroDePassarkWh, GastoEmDinheiroFerroDePassar: string;
   GastoLampadakWh, GastoEmDinheiroLampada: string;
   GastoMicroondaskWh, GastoEmDinheiroMicroondas: string;
-  TotalCustokWh, TotalCustoEmDinheiro : string;
-  TCalcularGasto : TCalculo;
   SomakWh, SomaEmDinheiro: Double;
 begin
   begin
-    TCalcularGasto := TCalculo.Create;
+    FCalcularGasto := TCalculo.Create;
     try
       if not(SpinEditArCondicionadoPoten.Value < 0) and not (SpinEditArCondicionadoQtd.Value < 0)
       and not (SpinEditArCondicionadoTempoHD.Value < 0) and not (SpinEditArCondicionadoComodos.Value < 0)then
        try
-       GastoArCondicionadokWh := TCalcularGasto.CalcularArCondicionado(SpinEditArCondicionadoPoten.Value, SpinEditArCondicionadoQtd.Value,
+       GastoArCondicionadokWh := FCalcularGasto.CalcularArCondicionado(SpinEditArCondicionadoPoten.Value, SpinEditArCondicionadoQtd.Value,
        SpinEditArCondicionadoTempoHD.Value, SpinEditArCondicionadoComodos.Value);
-       GastoEmDinheiroArCondicionado := TCalcularGasto.CalcularGastoEmDinheiro(GastoArCondicionadokWh);
+       GastoEmDinheiroArCondicionado := FCalcularGasto.CalcularGastoEmDinheiro(GastoArCondicionadokWh);
        Except
         on E: EvalidationError do
        begin
@@ -291,11 +300,11 @@ begin
       if (SpinEditVentiladorPoten.Value >= 0) and (SpinEditVentiladorQtd.Value >= 0) and (SpinEditVentiladorTempHD.Value >= 0)
       and(SpinEditVentiladorComodos.Value >= 0) then
       try
-      GastoVentiladorkWh := TCalcularGasto.CalcularVentilador(SpinEditVentiladorPoten.Value, SpinEditVentiladorQtd.Value, SpinEditVentiladorTempHD.Value,
+      GastoVentiladorkWh := FCalcularGasto.CalcularVentilador(SpinEditVentiladorPoten.Value, SpinEditVentiladorQtd.Value, SpinEditVentiladorTempHD.Value,
       SpinEditVentiladorComodos.Value);
       EditVentiladorkWh.Text := GastoVentiladorkWh;
         SomakWh := SomakWh + StrToFloat(GastoVentiladorkWh);
-      GastoEmDinheiroVentilador := TCalcularGasto.CalcularGastoEmDinheiro(GastoVentiladorkWh);
+      GastoEmDinheiroVentilador := FCalcularGasto.CalcularGastoEmDinheiro(GastoVentiladorkWh);
       EditVentiladorCusto.Text := GastoEmDinheiroVentilador;
         SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroVentilador);
       except
@@ -304,11 +313,11 @@ begin
       if (SpinEditTvPoten.Value >= 0) and (SpinEditTvQtd.Value >= 0) and (SpinEditTvTempHD.Value >= 0)
       and (SpinEditTvComodos.Value >= 0) then
       try
-      GastoTvkWh := TCalcularGasto.CalcularTv(SpinEditTvPoten.Value, SpinEditTvQtd.Value, SpinEditTvTempHD.Value,
+      GastoTvkWh := FCalcularGasto.CalcularTv(SpinEditTvPoten.Value, SpinEditTvQtd.Value, SpinEditTvTempHD.Value,
       SpinEditTvComodos.Value);
       EditTvkWh.Text := GastoTvkWh;
         SomakWh := SomakWh + StrToFloat(GastoTvkWh);
-      GastoEmDinheiroTv := TCalcularGasto.CalcularGastoEmDinheiro(GastoTvkWh);
+      GastoEmDinheiroTv := FCalcularGasto.CalcularGastoEmDinheiro(GastoTvkWh);
       EditTvCusto.Text := GastoEmDinheiroTv;
         SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroTv);
       except
@@ -317,11 +326,11 @@ begin
       if (SpinEditGeladeiraPoten.Value >= 0) and (SpinEditGeladeiraQtd.Value >= 0) and (SpinEditGeladeiraTempHD.Value >= 0)
       and (SpinEditGeladeiraComodos.Value >= 0) then
       try
-      GastoGeladeirakWh := TCalcularGasto.CalcularGeladeira(SpinEditGeladeiraPoten.Value, SpinEditGeladeiraQtd.Value, SpinEditGeladeiraTempHD.Value,
+      GastoGeladeirakWh := FCalcularGasto.CalcularGeladeira(SpinEditGeladeiraPoten.Value, SpinEditGeladeiraQtd.Value, SpinEditGeladeiraTempHD.Value,
       SpinEditGeladeiraComodos.Value);
         EditGeladeirakWh.Text := GastoGeladeirakWh;
           SomakWh := SomakWh + StrToFloat(GastoGeladeirakWh);
-      GastoEmDinheiroGeladeira := TCalcularGasto.CalcularGastoEmDinheiro(GastoGeladeirakWh);
+      GastoEmDinheiroGeladeira := FCalcularGasto.CalcularGastoEmDinheiro(GastoGeladeirakWh);
       EditGeladeiraCusto.Text := GastoEmDinheiroGeladeira;
          SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroGeladeira);
       except
@@ -330,11 +339,11 @@ begin
       if (SpinEditChuveiroPoten.Value >= 0) and (SpinEditChuveiroQtd.Value >= 0) and (SpinEditChuveiroTempHD.Value >= 0)
       and (SpinEditChuveiroComodos.Value >= 0) then
       try
-      GastoChuveirokWh := TCalcularGasto.CalcularChuveiro(SpinEditChuveiroPoten.Value, SpinEditChuveiroQtd.Value, SpinEditChuveiroTempHD.Value,
+      GastoChuveirokWh := FCalcularGasto.CalcularChuveiro(SpinEditChuveiroPoten.Value, SpinEditChuveiroQtd.Value, SpinEditChuveiroTempHD.Value,
       SpinEditChuveiroComodos.Value);
         EditChuveirokWh.Text := GastoChuveirokWh;
           SomakWh := SomakWh + StrToFloat(GastoChuveirokWh);
-      GastoEmDinheiroChuveiro := TCalcularGasto.CalcularGastoEmDinheiro(GastoChuveirokWh);
+      GastoEmDinheiroChuveiro := FCalcularGasto.CalcularGastoEmDinheiro(GastoChuveirokWh);
       EditChuveiroCusto.Text := GastoEmDinheiroChuveiro;
         SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroChuveiro);
       except
@@ -343,11 +352,11 @@ begin
       if (SpinEditSecadorCabeloPoten.Value >= 0) and (SpinEditSecadorCabeloQtd.Value >= 0) and (SpinEditSecadorCabeloTempHD.Value >= 0)
       and (SpinEditSecadorCabeloComodos.Value >= 0) then
       try
-      GastoSecadorDeCabelokWh := TCalcularGasto.CalcularSecadorDeCabelo(SpinEditSecadorCabeloPoten.Value, SpinEditSecadorCabeloQtd.Value, SpinEditSecadorCabeloTempHD.Value,
+      GastoSecadorDeCabelokWh := FCalcularGasto.CalcularSecadorDeCabelo(SpinEditSecadorCabeloPoten.Value, SpinEditSecadorCabeloQtd.Value, SpinEditSecadorCabeloTempHD.Value,
       SpinEditSecadorCabeloComodos.Value);
         EditSecadorDeCabelokWh.Text := GastoSecadorDeCabelokWh;
           SomakWh := SomakWh + StrToFloat(GastoSecadorDeCabelokWh);
-      GastoEmDinheiroSecadorDeCabelo := TCalcularGasto.CalcularGastoEmDinheiro(GastoSecadorDeCabelokWh);
+      GastoEmDinheiroSecadorDeCabelo := FCalcularGasto.CalcularGastoEmDinheiro(GastoSecadorDeCabelokWh);
       EditSecadorCabeloCusto.Text := GastoEmDinheiroSecadorDeCabelo;
           SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroSecadorDeCabelo);
       except
@@ -356,11 +365,11 @@ begin
       if (SpinEditComputadorPoten.Value >= 0) and (SpinEditComputadorQtd.Value >= 0) and (SpinEditComputadorTempHD.Value >= 0)
       and (SpinEditComputadorComodos.Value >= 0) then
       try
-      GastoComputadorkWh := TCalcularGasto.CalcularComputador(SpinEditComputadorPoten.Value, SpinEditComputadorQtd.Value, SpinEditComputadorTempHD.Value,
+      GastoComputadorkWh := FCalcularGasto.CalcularComputador(SpinEditComputadorPoten.Value, SpinEditComputadorQtd.Value, SpinEditComputadorTempHD.Value,
       SpinEditComputadorComodos.Value);
         EditComputadorkWh.Text := GastoComputadorkWh;
           SomakWh := SomakWh + StrToFloat(GastoComputadorkWh);
-      GastoEmDinheiroComputador := TCalcularGasto.CalcularGastoEmDinheiro(GastoComputadorkWh);
+      GastoEmDinheiroComputador := FCalcularGasto.CalcularGastoEmDinheiro(GastoComputadorkWh);
       EditComputadorCusto.Text := GastoEmDinheiroComputador;
           SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroComputador);
       except
@@ -369,11 +378,11 @@ begin
       if (SpinEditFerroPassarPoten.Value >= 0) and (SpinEditFerroPassarQtd.Value >= 0) and (SpinEditFerroPassarTempHD.Value >= 0)
       and (SpinEditFerroPassarComodos.Value >= 0) then
       try
-      GastoFerroDePassarkWh := TCalcularGasto.CalcularFerroDePassar(SpinEditFerroPassarPoten.Value, SpinEditFerroPassarQtd.Value, SpinEditFerroPassarTempHD.Value,
+      GastoFerroDePassarkWh := FCalcularGasto.CalcularFerroDePassar(SpinEditFerroPassarPoten.Value, SpinEditFerroPassarQtd.Value, SpinEditFerroPassarTempHD.Value,
       SpinEditFerroPassarComodos.Value);
         EditFerroDePassarkWh.Text := GastoFerroDePassarkWh;
         SomakWh := SomakWh + StrToFloat(GastoFerroDePassarkWh);
-      GastoEmDinheiroFerroDePassar := TCalcularGasto.CalcularGastoEmDinheiro(GastoFerroDePassarkWh);
+      GastoEmDinheiroFerroDePassar := FCalcularGasto.CalcularGastoEmDinheiro(GastoFerroDePassarkWh);
       EditFerroPassarCusto.Text := GastoEmDinheiroFerroDePassar;
          SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroFerroDePassar);
       except
@@ -382,11 +391,11 @@ begin
       if (SpinEditLampadaPoten.Value >= 0) and (SpinEditLampadaQtd.Value >= 0) and (SpinEditLampadaTempHD.Value >= 0)
       and (SpinEditLampadaComodos.Value >= 0) then
       try
-      GastoLampadakWh := TCalcularGasto.CalcularLampada(SpinEditLampadaPoten.Value, SpinEditLampadaQtd.Value, SpinEditLampadaTempHD.Value,
+      GastoLampadakWh := FCalcularGasto.CalcularLampada(SpinEditLampadaPoten.Value, SpinEditLampadaQtd.Value, SpinEditLampadaTempHD.Value,
       SpinEditLampadaComodos.Value);
         EditLampadakWh.Text := GastoLampadakWh;
         SomakWh := SomakWh + StrToFloat(GastoLampadakWh);
-      GastoEmDinheiroLampada := TCalcularGasto.CalcularGastoEmDinheiro(GastoLampadakWh);
+      GastoEmDinheiroLampada := FCalcularGasto.CalcularGastoEmDinheiro(GastoLampadakWh);
       EditLampadaCusto.Text := GastoEmDinheiroLampada;
         SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroLampada);
       except
@@ -395,11 +404,11 @@ begin
       if (SpinEditMicroondasPoten.Value >= 0) and (SpinEditMicroondasQtd.Value >= 0) and (SpinEditMicroondasTempHD.Value >= 0)
       and (SpinEditMicroondasComodos.Value >= 0) then
       try
-      GastoMicroondaskWh := TCalcularGasto.CalcularMicroondas(SpinEditMicroondasPoten.Value, SpinEditMicroondasQtd.Value, SpinEditMicroondasTempHD.Value,
+      GastoMicroondaskWh := FCalcularGasto.CalcularMicroondas(SpinEditMicroondasPoten.Value, SpinEditMicroondasQtd.Value, SpinEditMicroondasTempHD.Value,
       SpinEditMicroondasComodos.Value);
         EditMicroondaskWh.Text := GastoMicroondaskWh;
         SomakWh := SomakWh + StrToFloat(GastoMicroondaskWh);
-      GastoEmDinheiroMicroondas := TCalcularGasto.CalcularGastoEmDinheiro(GastoMicroondaskWh);
+      GastoEmDinheiroMicroondas := FCalcularGasto.CalcularGastoEmDinheiro(GastoMicroondaskWh);
       EditMicroondasCusto.Text := GastoEmDinheiroMicroondas;
          SomaEmDinheiro := SomaEmDinheiro + StrToFloat(GastoEmDinheiroMicroondas);
       except
@@ -409,7 +418,7 @@ begin
       EditTotalkWh.Text := FloatToStr(SomakWh);
       EditTotalCusto.Text := FloatToStr(SomaEmDinheiro);
     finally
-      TCalcularGasto.Free;
+      FCalcularGasto.Free;
     end;
   end;
 
@@ -439,6 +448,15 @@ begin
   end
   else
   MessageDlg(FNaoPermitirConsultaBandeira, mtError, mbOKCancel, 1);
+end;
+
+function TFrmCadastrar.DefineParãoSalvaTXT: string;
+var
+ PadrãoSalvar : string;
+begin
+  PadrãoSalvar := 'SEM TARIFA' + sLineBreak + 'Gasto em Khw: ' + EditTotalkWh.Text +
+  sLineBreak + 'Gasto em reais (R$): ' + EditTotalCusto.Text;
+  Result := PadrãoSalvar;
 end;
 
 procedure TFrmCadastrar.DesabilitarAlterarkWh;
@@ -484,6 +502,19 @@ begin
   SpinEditMicroondasTempHD.ReadOnly := True;
 end;
 
+procedure TFrmCadastrar.DesativaBotoes;
+begin
+  BtnCalcular.Enabled := False;
+  BtnSalvarTXT.Enabled := False;
+  BtnBandeiraTarifaria.Enabled := False;
+  BtnConsultar.Enabled := False;
+end;
+
+procedure TFrmCadastrar.DesativarGropoAparelhos;
+begin
+  GroupBoxAparelhos.Enabled := False;
+end;
+
 destructor TFrmCadastrar.Destroy;
 begin
   FGravar.Free;
@@ -499,9 +530,9 @@ procedure TFrmCadastrar.ConsultarTXT;
 begin
   MemoConsulta.Clear;
   try
-  MemoConsulta.Lines.LoadFromFile('D:\Desenvolvimento-Delphi(Edward)\SigaEnergy\ConsultaTXT\Teste.txt');
+  MemoConsulta.Lines.LoadFromFile(FPathArquivo);
   except
-  MemoConsulta.Lines.Add('Erro na abertura do arquivo de consulta !!!');
+  MemoConsulta.Lines.Add('Erro na abertura do arquivo de consulta !');
   end;
   Singleton := TSingleton.GetInstance;
   Singleton.GetFilePath(MemoConsulta.Text);
@@ -511,35 +542,97 @@ procedure TFrmCadastrar.FormShow(Sender: TObject);
 begin
   DesabilitarAlterarPotencia;
   DesabilitarAlterarkWh;
+  DesativarGropoAparelhos;
+  DesativarGropoAparelhos;
+  DesativaBotoes;
   SetarDefaultValorPotencia;
-//  EditGastoTotalAtribuidoTaxaBandeira.Text := Teste;
 end;
 
 procedure TFrmCadastrar.GravarTxt;
 begin
-  FGravar.GravarTXT('D:\Desenvolvimento-Delphi(Edward)\SigaEnergy\ConsultaTXT\Teste.txt',
-    EditTotalkWh.Text);
+  if (EditTotalkWh.Text <> '') and (EditTotalkWh.Text <> IntToStr(0)) then
+  FGravar.GravarTXT(FPathArquivo, DefineParãoSalvaTXT)
+  else
+  MessageDlg((FErroAoGravar + FPathArquivo), mtError, mbOKCancel, 1);
+end;
+
+procedure TFrmCadastrar.LimparCampos;
+begin
+  FQuantidade := 0;
+  SpinEditArCondicionadoQtd.Value := FQuantidade;
+  SpinEditVentiladorQtd.Value := FQuantidade;
+  SpinEditTvQtd.Value := FQuantidade;
+  SpinEditGeladeiraQtd.Value := FQuantidade;
+  SpinEditChuveiroQtd.Value := FQuantidade;
+  SpinEditSecadorCabeloQtd.Value := FQuantidade;
+  SpinEditComputadorQtd.Value := FQuantidade;
+  SpinEditFerroPassarQtd.Value := FQuantidade;
+  SpinEditLampadaQtd.Value := FQuantidade;
+  SpinEditMicroondasQtd.Value := FQuantidade;
+
+  FComodos := 0;
+  SpinEditArCondicionadoComodos.Value := FComodos;
+  SpinEditVentiladorComodos.Value := FComodos;
+  SpinEditTvComodos.Value := FComodos;
+  SpinEditGeladeiraComodos.Value := FComodos;
+  SpinEditChuveiroComodos.Value := FComodos;
+  SpinEditSecadorCabeloComodos.Value := FComodos;
+  SpinEditComputadorComodos.Value := FComodos;
+  SpinEditFerroPassarComodos.Value := FComodos;
+  SpinEditLampadaComodos.Value := FComodos;
+  SpinEditMicroondasComodos.Value := FComodos;
+
+  EditArCondicionadokWh.Clear;
+  EditVentiladorkWh.Clear;
+  EditTvkWh.Clear;
+  EditGeladeirakWh.Clear;
+  EditChuveirokWh.Clear;
+  EditSecadorDeCabelokWh.Clear;
+  EditComputadorkWh.Clear;
+  EditFerroDePassarkWh.Clear;
+  EditLampadakWh.Clear;
+  EditMicroondaskWh.Clear;
+
+  EditArCondicionadoCusto.Clear;
+  EditVentiladorCusto.Clear;
+  EditTvCusto.Clear;
+  EditGeladeiraCusto.Clear;
+  EditChuveiroCusto.Clear;
+  EditSecadorCabeloCusto.Clear;
+  EditComputadorCusto.Clear;
+  EditFerroPassarCusto.Clear;
+  EditLampadaCusto.Clear;
+  EditMicroondasCusto.Clear;
+
+  EditTotalkWh.Clear;
+  EditTotalCusto.Clear;
 end;
 
 procedure TFrmCadastrar.RadioBtnDiarioClick(Sender: TObject);
 begin
   AtribuirTempoDiario24H;
+  LimparCampos;
   DesabilitarAlterarTempo;
   AtivarGroupBoxAparelhos;
+  AtivaBotoes;
 end;
 
 procedure TFrmCadastrar.RadioBtnPersonalizadoClick(Sender: TObject);
 begin
   AtribuirTempoPersonalizado;
+  LimparCampos;
   AtivarAlterarTempo;
   AtivarGroupBoxAparelhos;
+  AtivaBotoes;
 end;
 
 procedure TFrmCadastrar.RadioBtnMensalClick(Sender: TObject);
 begin
   AtribuirTempoMensa710H;
+  LimparCampos;
   DesabilitarAlterarTempo;
   AtivarGroupBoxAparelhos;
+  AtivaBotoes;
 end;
 
 procedure TFrmCadastrar.SetarDefaultValorPotencia;

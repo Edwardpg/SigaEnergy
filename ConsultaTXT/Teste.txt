@@ -1,1 +1,3 @@
-364,8
+SEM TARIFA
+Gasto em Khw: 504
+Gasto em reais (R$): 151,2
