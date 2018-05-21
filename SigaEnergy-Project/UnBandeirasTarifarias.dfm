@@ -23,13 +23,38 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
     Width = 770
     Height = 41
     Caption = 'Gasto Total'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 0
-    object LabelResultadoCalculado: TLabel
+    object LabelResultadoBandeiraCor: TLabel
       Left = 23
       Top = 19
-      Width = 236
+      Width = 145
       Height = 13
-      Caption = 'Resultado Final j'#225' Calculado com a Tarif'#225'ria (R$):'
+      Caption = 'Resultado Final Bandeira: '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbCorBandeira: TLabel
+      Left = 188
+      Top = 19
+      Width = 3
+      Height = 13
+    end
+    object LabelResultadoCalculadoRS: TLabel
+      Left = 446
+      Top = 17
+      Width = 173
+      Height = 13
+      Caption = 'Calculado com a Tarif'#225'ria (R$):'
     end
     object EditResultadoCalculado: TEdit
       Left = 629
@@ -46,6 +71,12 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
     Width = 770
     Height = 305
     Caption = 'Detalhes: Bandeiras Tarif'#225'rias'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 1
     object GroupBoxBandeiraAmarela: TGroupBox
       Left = 203
@@ -487,16 +518,16 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
           06A75A3BB51454B01B9A28A2803FFFD9}
       end
       object LabelBandeiraAmarela: TLabel
-        Left = 6
+        Left = 5
         Top = 247
-        Width = 48
+        Width = 57
         Height = 13
         Caption = 'Resultado'
       end
       object EditBandeiraAmarela: TEdit
-        Left = 56
+        Left = 68
         Top = 244
-        Width = 121
+        Width = 110
         Height = 21
         Alignment = taRightJustify
         ReadOnly = True
@@ -897,9 +928,9 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
           14515A01FFD9}
       end
       object LabelBandeiraVerde: TLabel
-        Left = 9
+        Left = 5
         Top = 248
-        Width = 48
+        Width = 57
         Height = 13
         Caption = 'Resultado'
       end
@@ -1365,15 +1396,15 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       end
       object LabelBandeiraClara: TLabel
         Left = 6
-        Top = 247
-        Width = 48
+        Top = 246
+        Width = 57
         Height = 13
         Caption = 'Resultado'
       end
       object EditBandeiraVermelhaClara: TEdit
-        Left = 58
+        Left = 69
         Top = 243
-        Width = 121
+        Width = 110
         Height = 21
         Alignment = taRightJustify
         ReadOnly = True
@@ -1829,15 +1860,15 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       end
       object LabelVermelhoEscuro: TLabel
         Left = 6
-        Top = 247
-        Width = 48
+        Top = 246
+        Width = 57
         Height = 13
         Caption = 'Resultado'
       end
       object EditBandeiraVermelhaEscuro: TEdit
-        Left = 56
+        Left = 69
         Top = 244
-        Width = 121
+        Width = 108
         Height = 21
         Alignment = taRightJustify
         ReadOnly = True
@@ -1851,24 +1882,30 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
     Width = 770
     Height = 57
     Caption = 'Informa'#231#245'es e Calular'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 2
     object LabelTotalGastokWhCadastrada: TLabel
-      Left = 16
+      Left = 6
       Top = 24
-      Width = 95
+      Width = 116
       Height = 13
-      Caption = 'Total gasto em kWh'
+      Caption = 'Total gasto em kWh:'
     end
     object LabelTotalGastoReaisCadastrado: TLabel
-      Left = 259
-      Top = 24
-      Width = 175
-      Height = 13
-      Caption = 'Total Gasto - Sem Aplicar T'#225'rifa (R$)'
+      Left = 265
+      Top = 16
+      Width = 134
+      Height = 26
+      Caption = 'Total Gasto'#13'Sem Aplicar T'#225'rifa (R$):'
     end
     object EditTotalGastokWhCadastrada: TEdit
-      Left = 128
-      Top = 21
+      Left = 134
+      Top = 20
       Width = 121
       Height = 21
       Alignment = taRightJustify
@@ -1876,8 +1913,8 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       TabOrder = 0
     end
     object EditTotalGastoReaisCadastrado: TEdit
-      Left = 439
-      Top = 21
+      Left = 416
+      Top = 23
       Width = 121
       Height = 21
       Alignment = taRightJustify
@@ -1885,20 +1922,33 @@ object FrmBandeiraTarifaria: TFrmBandeiraTarifaria
       TabOrder = 1
     end
     object BtnCalcular: TBitBtn
-      Left = 570
+      Left = 546
       Top = 10
-      Width = 99
+      Width = 112
       Height = 44
       Caption = 'Calcular'#13'Bandeira T'#225'rifaria'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 2
       OnClick = BtnCalcularClick
     end
     object BtnSalvarTXT: TBitBtn
-      Left = 674
+      Left = 661
       Top = 10
-      Width = 89
+      Width = 102
       Height = 44
       Caption = 'Salvar Calculo'#13'com Tarifa (.txt)'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 3
       OnClick = BtnSalvarTXTClick
     end

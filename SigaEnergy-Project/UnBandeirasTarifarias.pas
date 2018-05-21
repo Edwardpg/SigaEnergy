@@ -16,7 +16,7 @@ type
     ImageBandeiraVermelhaFraco: TImage;
     ImageBandeiraVermelhaEscura: TImage;
     GroupBoxTotalBandeira: TGroupBox;
-    LabelResultadoCalculado: TLabel;
+    LabelResultadoBandeiraCor: TLabel;
     EditResultadoCalculado: TEdit;
     GroupBoxBandeiraVerde: TGroupBox;
     EditBandeiraVerde: TEdit;
@@ -36,6 +36,8 @@ type
     LabelTotalGastoReaisCadastrado: TLabel;
     BtnCalcular: TBitBtn;
     BtnSalvarTXT: TBitBtn;
+    LbCorBandeira: TLabel;
+    LabelResultadoCalculadoRS: TLabel;
     procedure BtnCalcularClick(Sender: TObject);
     procedure BtnSalvarTXTClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -46,6 +48,7 @@ type
     FResultadoQuebrado: Double;
     FValorTaxaTarifaria: Double;
     FBandeira : string;
+    procedure AtivarBotaoSalvarTxtTarifa;
     function TrunckWh: Integer;
     function FormulaTarifa: Integer;
   private const
@@ -53,7 +56,7 @@ type
     FValorBandeiraAmarela = 1;
     FValorBandeiraVermelhaClara = 3;
     FValorBandeiraVermelhaEscura = 5;
-    FPathArquivo = 'D:\Desenvolvimento-Delphi(Edward)\SigaEnergy\ConsultaTXT\Teste.txt';
+    FPathArquivo = 'D:\Desenvolvimento-Delphi(Edward)\SigaEnergy\ConsultaTXT\ConsultaGasto.txt';
     FErroAoGravar = 'Desculpe mas não foi possivel gravar o arquivo no diretório : ';
   public
     procedure GravarTxtComTarifa;
@@ -77,7 +80,7 @@ function TFrmBandeiraTarifaria.DefineParãoSalvaTxtComTarifa: string;
 var
  PadrãoSalvarTarifa : string;
 begin
-  PadrãoSalvarTarifa := 'COM TARIFA BANDEIRA: '+ FBandeira.ToUpper + sLineBreak + 'Gasto em Khw: ' + EditTotalGastokWhCadastrada.Text +
+  PadrãoSalvarTarifa := 'COM TARIFA BANDEIRA: '+ FBandeira + sLineBreak + 'Gasto em Khw: ' + EditTotalGastokWhCadastrada.Text +
   sLineBreak + 'Gasto em reais (R$): ' + EditTotalGastoReaisCadastrado.Text;
   Result := PadrãoSalvarTarifa;
 end;
@@ -85,6 +88,7 @@ end;
 procedure TFrmBandeiraTarifaria.BtnCalcularClick(Sender: TObject);
 begin
   CalcularBandeira;
+  AtivarBotaoSalvarTxtTarifa;
 end;
 
 { TFrmBandeiraTarifaria }
@@ -104,6 +108,8 @@ begin
   (StrToFloat(EditTotalGastoReaisCadastrado.Text),
     StrToFloat(EditBandeiraVerde.Text));
   FBandeira:= 'Verde';
+  LbCorBandeira.Caption := FBandeira;
+  LbCorBandeira.Font.Color := clGreen;
   end;
   if (TrunckWh > 300) and (TrunckWh <= 750) then
   begin
@@ -113,6 +119,8 @@ begin
   EditResultadoCalculado.Text := CalcularBandeira.CalcularTotalTarifa
   (StrToFloat(EditTotalGastoReaisCadastrado.Text), StrToFloat(EditBandeiraAmarela.Text));
   FBandeira:= 'Amarela';
+  LbCorBandeira.Caption := FBandeira;
+  LbCorBandeira.Font.Color := clYellow;
   end;
   if (TrunckWh > 750) and (TrunckWh <= 1400) then
   begin
@@ -122,6 +130,8 @@ begin
   EditResultadoCalculado.Text := CalcularBandeira.CalcularTotalTarifa
   (StrToFloat(EditTotalGastoReaisCadastrado.Text), StrToFloat(EditBandeiraVermelhaClara.Text));
   FBandeira:= 'Vermelha - Patamar I';
+  LbCorBandeira.Caption := FBandeira;
+  LbCorBandeira.Font.Color := clMaroon;
   end;
   if (TrunckWh > 1400) then
   begin
@@ -131,6 +141,8 @@ begin
   EditResultadoCalculado.Text := CalcularBandeira.CalcularTotalTarifa
   (StrToFloat(EditTotalGastoReaisCadastrado.Text), StrToFloat(EditBandeiraVermelhaEscuro.Text));
   FBandeira:= 'Vermelha - Patamar II';
+  LbCorBandeira.Caption := FBandeira;
+  LbCorBandeira.Font.Color := clRed;
   end;
   finally
   CalcularBandeira.Free;
@@ -147,6 +159,12 @@ destructor TFrmBandeiraTarifaria.Destroy;
 begin
   FGravarTarifa.Free;
   inherited;
+end;
+
+procedure TFrmBandeiraTarifaria.AtivarBotaoSalvarTxtTarifa;
+begin
+  if BtnSalvarTXT.Enabled = False then
+    BtnSalvarTXT.Enabled := True;
 end;
 
 procedure TFrmBandeiraTarifaria.BtnSalvarTXTClick(Sender: TObject);

@@ -9,7 +9,9 @@ uses
   UnBandeirasTarifarias in 'UnBandeirasTarifarias.pas' {FrmBandeiraTarifaria},
   UnCalculoBandeiras in 'UnCalculoBandeiras.pas',
   UnGravarTXT in 'UnGravarTXT.pas',
-  UnSingleton in 'UnSingleton.pas';
+  UnSingleton in 'UnSingleton.pas',
+  UnEvalidationError in 'UnEvalidationError.pas',
+  UnAgradeicimentoAutor in 'UnAgradeicimentoAutor.pas' {FrmAutor};
 
 {$R *.res}
 
@@ -18,5 +20,6 @@ begin
   Application.MainFormOnTaskbar := True;
   ReportMemoryLeaksOnShutdown := True;
   Application.CreateForm(TFrmSigaEnergy, FrmSigaEnergy);
+  Application.CreateForm(TFrmAutor, FrmAutor);
   Application.Run;
 end.

@@ -14,6 +14,7 @@ object FrmSigaEnergy: TFrmSigaEnergy
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -531,11 +532,20 @@ object FrmSigaEnergy: TFrmSigaEnergy
   end
   object BtnConsultar: TBitBtn
     Left = 297
-    Top = 106
+    Top = 96
     Width = 75
     Height = 25
     Caption = 'Consultar'
     TabOrder = 1
     OnClick = BtnConsultarClick
+  end
+  object BtnCreditos: TBitBtn
+    Left = 296
+    Top = 127
+    Width = 75
+    Height = 25
+    Caption = 'Cr'#233'ditos'
+    TabOrder = 2
+    OnClick = BtnCreditosClick
   end
 end
