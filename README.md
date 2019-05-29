@@ -1,5 +1,5 @@
 # Simulador de gasto de energia **SigaEnergy**
-![Edward](https://img.shields.io/badge/FAM-Edward-blue.svg)      ![](https://img.shields.io/badge/Projeto_Integrador-Algoritimos-yellowgreen.svg)      ![license](https://img.shields.io/badge/License-MIT-blue.svg)
+![Edward](https://img.shields.io/badge/FAM-Edward-blue.svg)      ![](https://img.shields.io/badge/Projeto_Integrador-Algoritimos-red.svg)      ![license](https://img.shields.io/badge/License-MIT-yellowgreen.svg)
   * Linguagem Delphi (Object Pascal)
   * Faculdade de Americana-SP
   * Algoritimo
